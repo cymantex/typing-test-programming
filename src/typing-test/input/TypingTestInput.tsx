@@ -6,15 +6,19 @@ import React, {
 } from "react";
 
 export interface TypingTestInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  typingTestInputValue: string,
   onPastePreventDefault: ClipboardEventHandler<HTMLInputElement>,
   onBackspaceRemoveLastCharForCurrentWord: KeyboardEventHandler<HTMLInputElement>,
-  onChangeAppendChar: ChangeEventHandler<HTMLInputElement>
+  onChangeAppendChar: ChangeEventHandler<HTMLInputElement>,
+  onFirstInput: () => void
 }
 
 export function TypingTestInput({
+  typingTestInputValue,
   onPastePreventDefault,
   onBackspaceRemoveLastCharForCurrentWord,
   onChangeAppendChar,
+  onFirstInput,
   ...props
 }: TypingTestInputProps) {
   return (
@@ -24,7 +28,13 @@ export function TypingTestInput({
           value=""
           onPaste={onPastePreventDefault}
           onKeyDown={onBackspaceRemoveLastCharForCurrentWord}
-          onChange={onChangeAppendChar}
+          onChange={(event) => {
+            if (typingTestInputValue === "") {
+              onFirstInput();
+            }
+
+            onChangeAppendChar(event);
+          }}
           {...props}
       />
   );

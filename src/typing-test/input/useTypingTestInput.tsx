@@ -2,11 +2,7 @@ import React, {useState} from "react";
 import {TypingTestInputProps} from "./TypingTestInput";
 import _ from "lodash";
 
-interface TypingTestInputEvent extends TypingTestInputProps {
-  typingTestInputValue: string
-}
-
-export function useTypingTestInput(): TypingTestInputEvent {
+export function useTypingTestInput(): Omit<TypingTestInputProps, "onFirstInput"> {
   const [value, setValue] = useState<string>("");
 
   function removeLastCharOnBackspaceForCurrentWord(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -26,6 +22,7 @@ export function useTypingTestInput(): TypingTestInputEvent {
   return {
     typingTestInputValue: value,
     onPastePreventDefault: (event) => {
+      // TODO: Would maybe be nice with some Toast here instead :-)
       console.warn("Copy paste cheating is not allowed, sorry!");
       event.preventDefault();
     },

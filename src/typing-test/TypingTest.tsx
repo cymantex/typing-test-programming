@@ -4,6 +4,7 @@ import _ from "lodash";
 import {loremIpsum} from "../vocabulary/loremIpsum";
 import {useTypingTestInput} from "./input/useTypingTestInput";
 import {TypingTestStats} from "./stats/TypingTestStats";
+import {useTypingTestStats} from "./stats/useTypingTestStats";
 
 const vocabulary = _.shuffle(loremIpsum);
 
@@ -13,21 +14,31 @@ export function TypingTest() {
     ...typingTestInputProps
   } = useTypingTestInput();
 
+  const actualWords = typingTestInputValue.split(" ");
+  const expectedWords = vocabulary;
+
+  const {startTimer, ...typingTestStatsProps} = useTypingTestStats(actualWords, expectedWords);
+
   return (
       <div>
         <h1 className="text-3xl lg:text-5xl">Typing speed test - Programming edition</h1>
         <div className="divider"/>
-        <TypingTestStats/>
+        <TypingTestStats
+            className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-3 justify-center mb-5 text-center stats"
+            {...typingTestStatsProps}
+        />
         <div className="relative overflow-hidden">
           <TypingTestDiff
               className="-z-10 absolute left-1/2 top-1/2 -translate-y-1/2 whitespace-pre select-none text-2xl"
               previousWordsAndCharsClassName="absolute -translate-x-full"
-              remainingCharsClassName="mr-1"
-              actualWords={typingTestInputValue.split(" ")}
-              expectedWords={vocabulary}
+              remainingCharsClassName="mr-2"
+              actualWords={actualWords}
+              expectedWords={expectedWords}
           />
           <TypingTestInput
+              typingTestInputValue={typingTestInputValue}
               className="h-24 w-full text-2xl text-center bg-transparent input input-bordered rounded-none"
+              onFirstInput={startTimer}
               {...typingTestInputProps}
           />
         </div>
