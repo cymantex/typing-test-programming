@@ -11,16 +11,21 @@ const vocabulary = _.shuffle(loremIpsum);
 export function TypingTest() {
   const {
     typingTestInputValue,
+    resetTypingTestInputValue,
     ...typingTestInputProps
   } = useTypingTestInput();
 
   const actualWords = typingTestInputValue.split(" ");
   const expectedWords = vocabulary;
 
-  const {startTimer, ...typingTestStatsProps} = useTypingTestStats({
+  const {startTimer, restartTimer, ...typingTestStatsProps} = useTypingTestStats({
     actualWords,
     expectedWords,
-    testDurationSeconds: 60
+    testDurationSeconds: 60,
+    onTimerExpire: () => {
+      resetTypingTestInputValue();
+      restartTimer();
+    }
   });
 
   return (

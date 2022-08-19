@@ -2,17 +2,12 @@ import React, {useState} from "react";
 import {TypingTestInputProps} from "./TypingTestInput";
 import _ from "lodash";
 
-export function useTypingTestInput(): Omit<TypingTestInputProps, "onFirstInput"> {
-  const [value, setValue] = useState<string>("");
+export interface TypingTestInputEvent extends Omit<TypingTestInputProps, "onFirstInput"> {
+  resetTypingTestInputValue: () => void
+}
 
-  function removeLastCharOnBackspaceForCurrentWord(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "Backspace" && canRemovePreviousCharacter()) {
-      setValue(previousValue => _(previousValue)
-          .split("")
-          .slice(0, previousValue.length - 1)
-          .join(""));
-    }
-  }
+export function useTypingTestInput(): TypingTestInputEvent {
+  const [value, setValue] = useState<string>("");
 
   function canRemovePreviousCharacter(): boolean {
     const previousChar = value.charAt(value.length - 1);
@@ -21,12 +16,20 @@ export function useTypingTestInput(): Omit<TypingTestInputProps, "onFirstInput">
 
   return {
     typingTestInputValue: value,
+    resetTypingTestInputValue: () => setValue(""),
     onPastePreventDefault: (event) => {
       // TODO: Would maybe be nice with some Toast here instead :-)
       console.warn("Copy paste cheating is not allowed, sorry!");
       event.preventDefault();
     },
-    onBackspaceRemoveLastCharForCurrentWord: removeLastCharOnBackspaceForCurrentWord,
+    onBackspaceRemoveLastCharForCurrentWord: (event) => {
+      if (event.key === "Backspace" && canRemovePreviousCharacter()) {
+        setValue(previousValue => _(previousValue)
+            .split("")
+            .slice(0, previousValue.length - 1)
+            .join(""));
+      }
+    },
     onChangeAppendChar: (event) => {
       const charToAppend = event.target.value;
       const lastValidChar = value.charAt(value.length - 1);
