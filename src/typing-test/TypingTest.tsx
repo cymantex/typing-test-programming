@@ -31,11 +31,11 @@ export function TypingTest() {
             className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-3 justify-center mb-5 text-center stats"
             {...typingTestStatsProps}
         />
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden font-mono">
           <TypingTestDiff
               className="-z-10 absolute left-1/2 top-1/2 -translate-y-1/2 whitespace-pre select-none text-2xl"
               previousWordsAndCharsClassName="absolute -translate-x-full"
-              remainingCharsClassName="mr-2"
+              remainingCharsClassName="mr-3"
               actualWords={actualWords}
               expectedWords={expectedWords}
           />
