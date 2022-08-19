@@ -22,9 +22,8 @@ export function useTypingTestStats(actualWords: string[], expectedWords: string[
       .intersection(actualWords)
       .toJSON();
 
-  // TODO: Only count correct words/characters
   return {
-    wpm: correctWords.length, // TODO: Correct words
+    wpm: correctWords.length,
     cpm: correctWords.join("").length,
     startTimer: start,
     // This is a bit of an ugly hack to display the amount of seconds available for the test.
