@@ -7,7 +7,12 @@ export interface TypingTestStatsProps extends HTMLAttributes<HTMLElement> {
   wpm?: number
 }
 
-export function TypingTestStats({remainingSeconds = 60, cpm = 0, wpm = 0, ...props}: TypingTestStatsProps) {
+export function TypingTestStats({
+  remainingSeconds = 60,
+  cpm = 0,
+  wpm = 0,
+  ...props
+}: TypingTestStatsProps) {
   return (
       <div {...props}>
         <Stat title="SECONDS" value={remainingSeconds}/>
@@ -16,4 +21,3 @@ export function TypingTestStats({remainingSeconds = 60, cpm = 0, wpm = 0, ...pro
       </div>
   );
 }
-

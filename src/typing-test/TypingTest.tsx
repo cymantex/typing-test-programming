@@ -17,7 +17,11 @@ export function TypingTest() {
   const actualWords = typingTestInputValue.split(" ");
   const expectedWords = vocabulary;
 
-  const {startTimer, ...typingTestStatsProps} = useTypingTestStats(actualWords, expectedWords);
+  const {startTimer, ...typingTestStatsProps} = useTypingTestStats({
+    actualWords,
+    expectedWords,
+    testDurationSeconds: 60
+  });
 
   return (
       <div>
