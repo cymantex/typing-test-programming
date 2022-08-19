@@ -1,5 +1,5 @@
 import {TypingTestInput} from "./input/TypingTestInput";
-import {TypingTestDiff} from "./assertion/TypingTestDiff";
+import {TypingTestDiff} from "./diff/TypingTestDiff";
 import _ from "lodash";
 import {loremIpsum} from "../vocabulary/loremIpsum";
 import {useTypingTestInput} from "./input/useTypingTestInput";
