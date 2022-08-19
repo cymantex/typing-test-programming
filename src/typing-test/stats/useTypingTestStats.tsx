@@ -19,7 +19,7 @@ export function useTypingTestStats(actualWords: string[], expectedWords: string[
       // Using actualWords.length instead here would mean the CPM/WPM updates immediately when
       // the user reaches the end of the current word rather than when submitting it.
       .slice(0, actualWords.length - 1)
-      .intersection(actualWords)
+      .filter((expectedWord, i) => expectedWord === actualWords[i])
       .toJSON();
 
   return {
