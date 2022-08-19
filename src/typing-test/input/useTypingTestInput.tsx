@@ -1,40 +1,48 @@
 import React, {useState} from "react";
 import {TypingTestInputProps} from "./TypingTestInput";
+import _ from "lodash";
 
 interface TypingTestInputEvent extends TypingTestInputProps {
-  currentValue: string
+  typingTestInputValue: string
 }
 
 export function useTypingTestInput(): TypingTestInputEvent {
-  const [currentValue, setCurrentValue] = useState<string>("");
+  const [value, setValue] = useState<string>("");
 
   function removeLastCharOnBackspaceForCurrentWord(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Backspace" && canRemovePreviousCharacter()) {
-      setCurrentValue(previousValue => previousValue.slice(0, previousValue.length - 1));
+      setValue(previousValue => _(previousValue)
+          .split("")
+          .slice(0, previousValue.length - 1)
+          .join(""));
     }
   }
 
   function canRemovePreviousCharacter(): boolean {
-    const previousChar = currentValue.charAt(currentValue.length - 1);
+    const previousChar = value.charAt(value.length - 1);
     return !["", " "].includes(previousChar);
   }
 
   return {
-    currentValue,
+    typingTestInputValue: value,
+    onPastePreventDefault: (event) => {
+      console.warn("Copy paste cheating is not allowed, sorry!");
+      event.preventDefault();
+    },
     onBackspaceRemoveLastCharForCurrentWord: removeLastCharOnBackspaceForCurrentWord,
-    onChangeAppendChar: (e) => {
-      const charToAppend = e.target.value;
-      const lastValidChar = currentValue.charAt(currentValue.length - 1);
+    onChangeAppendChar: (event) => {
+      const charToAppend = event.target.value;
+      const lastValidChar = value.charAt(value.length - 1);
 
-      if (userIsTryingToInputAnEmptyWord(charToAppend, lastValidChar)) {
+      if (userIsTryingToEnterAnEmptyWord(charToAppend, lastValidChar)) {
         return;
       }
 
-      setCurrentValue(previousValue => previousValue + charToAppend);
+      setValue(previousValue => previousValue + charToAppend);
     }
   };
 }
 
-function userIsTryingToInputAnEmptyWord(charToAppend: string, lastValidChar: string) {
+function userIsTryingToEnterAnEmptyWord(charToAppend: string, lastValidChar: string) {
   return charToAppend === " " && (lastValidChar === "" || lastValidChar === " ");
 }

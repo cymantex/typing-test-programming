@@ -1,23 +1,28 @@
-import React, {ChangeEventHandler, InputHTMLAttributes, KeyboardEventHandler} from "react";
-import classNames from "classnames";
+import React, {
+  ChangeEventHandler,
+  ClipboardEventHandler,
+  InputHTMLAttributes,
+  KeyboardEventHandler
+} from "react";
 
 export interface TypingTestInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  onPastePreventDefault: ClipboardEventHandler<HTMLInputElement>,
   onBackspaceRemoveLastCharForCurrentWord: KeyboardEventHandler<HTMLInputElement>,
   onChangeAppendChar: ChangeEventHandler<HTMLInputElement>
 }
 
 export function TypingTestInput({
+  onPastePreventDefault,
   onBackspaceRemoveLastCharForCurrentWord,
   onChangeAppendChar,
-  className,
   ...props
 }: TypingTestInputProps) {
   return (
       <input
-          className={classNames("input input-bordered", className)}
           type="text"
           autoFocus
           value=""
+          onPaste={onPastePreventDefault}
           onKeyDown={onBackspaceRemoveLastCharForCurrentWord}
           onChange={onChangeAppendChar}
           {...props}
