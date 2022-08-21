@@ -1,18 +1,15 @@
 import {TypingTestInput} from "./input/TypingTestInput";
 import {TypingTestDiff} from "./diff/TypingTestDiff";
-import _ from "lodash";
-import {loremIpsum} from "./vocabulary/loremIpsum";
 import {TypingTestStats} from "./stats/TypingTestStats";
 import {useTypingTestStats} from "./stats/useTypingTestStats";
 import {TypingTestResultModal} from "./result/TypingTestResultModal";
 import {useTypingTestStore} from "./useTypingTestStore";
 
-let vocabulary = _.shuffle(loremIpsum);
-
 export function TypingTest() {
   const {
     inputValue,
     modalOpen,
+    expectedWords,
     handleTimerExpire,
     handleModalClose,
     onChangeAppendChar,
@@ -20,7 +17,6 @@ export function TypingTest() {
   } = useTypingTestStore();
 
   const actualWords = inputValue.split(" ");
-  const expectedWords = vocabulary;
 
   const {startTimer, resetTimer, cpm, wpm, remainingSeconds} = useTypingTestStats({
     actualWords,
@@ -66,7 +62,6 @@ export function TypingTest() {
             wpm={wpm}
             modalOpen={modalOpen}
             onClose={() => {
-              vocabulary = _.shuffle(vocabulary);
               resetTimer();
               handleModalClose();
             }}

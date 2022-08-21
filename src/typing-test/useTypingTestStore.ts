@@ -1,10 +1,12 @@
 import create from "zustand";
 import React, {ChangeEvent} from "react";
 import _ from "lodash";
+import {loremIpsum} from "./vocabulary/loremIpsum";
 
 export interface TypingTestStore {
   inputValue: string,
   modalOpen: boolean,
+  expectedWords: string[],
   resetInputValue: () => void,
   onBackspaceRemoveLastCharForCurrentWord: (event: React.KeyboardEvent<HTMLInputElement>) => void,
   onChangeAppendChar: (event: ChangeEvent<HTMLInputElement>) => void,
@@ -15,6 +17,7 @@ export interface TypingTestStore {
 export const useTypingTestStore = create<TypingTestStore>(set => ({
   inputValue: "",
   modalOpen: false,
+  expectedWords: _.shuffle(loremIpsum),
   resetInputValue: () => set(state => ({
     ...state,
     inputValue: ""
@@ -62,6 +65,7 @@ export const useTypingTestStore = create<TypingTestStore>(set => ({
   })),
   handleModalClose: () => set(state => ({
     ...state,
+    expectedWords: _.shuffle(state.expectedWords),
     modalOpen: false,
     inputValue: ""
   }))
