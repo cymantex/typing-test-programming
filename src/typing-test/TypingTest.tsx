@@ -5,8 +5,10 @@ import {loremIpsum} from "./vocabulary/loremIpsum";
 import {useTypingTestInput} from "./input/useTypingTestInput";
 import {TypingTestStats} from "./stats/TypingTestStats";
 import {useTypingTestStats} from "./stats/useTypingTestStats";
+import {TypingTestResultModal} from "./result/TypingTestResultModal";
+import {useState} from "react";
 
-const vocabulary = _.shuffle(loremIpsum);
+let vocabulary = _.shuffle(loremIpsum);
 
 export function TypingTest() {
   const {
@@ -14,18 +16,16 @@ export function TypingTest() {
     resetTypingTestInputValue,
     ...typingTestInputProps
   } = useTypingTestInput();
+  const [typingTestResultsModalOpen, setTypingTestResultsModalOpen] = useState(false);
 
   const actualWords = typingTestInputValue.split(" ");
   const expectedWords = vocabulary;
 
-  const {startTimer, restartTimer, ...typingTestStatsProps} = useTypingTestStats({
+  const {startTimer, resetTimer, cpm, wpm, remainingSeconds} = useTypingTestStats({
     actualWords,
     expectedWords,
-    testDurationSeconds: 60,
-    onTimerExpire: () => {
-      resetTypingTestInputValue();
-      restartTimer();
-    }
+    testDurationSeconds: 5,
+    onTimerExpire: () => setTypingTestResultsModalOpen(true)
   });
 
   return (
@@ -34,7 +34,9 @@ export function TypingTest() {
         <div className="divider"/>
         <TypingTestStats
             className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-3 justify-center mb-5 text-center stats"
-            {...typingTestStatsProps}
+            cpm={cpm}
+            wpm={wpm}
+            remainingSeconds={remainingSeconds}
         />
         <div className="relative overflow-hidden font-mono">
           <TypingTestDiff
@@ -48,9 +50,21 @@ export function TypingTest() {
               typingTestInputValue={typingTestInputValue}
               className="h-24 w-full text-2xl text-center bg-transparent input input-bordered rounded-none"
               onFirstInput={startTimer}
+              disabled={typingTestResultsModalOpen}
               {...typingTestInputProps}
           />
         </div>
+        <TypingTestResultModal
+            cpm={cpm}
+            wpm={wpm}
+            open={typingTestResultsModalOpen}
+            onClose={() => {
+              vocabulary = _.shuffle(vocabulary);
+              resetTypingTestInputValue();
+              resetTimer();
+              setTypingTestResultsModalOpen(false);
+            }}
+        />
       </div>
   );
 }

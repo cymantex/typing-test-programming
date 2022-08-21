@@ -4,6 +4,7 @@ import React, {
   InputHTMLAttributes,
   KeyboardEventHandler
 } from "react";
+import {useFocus} from "../../utils/useFocus";
 
 export interface TypingTestInputProps extends InputHTMLAttributes<HTMLInputElement> {
   typingTestInputValue: string,
@@ -19,13 +20,16 @@ export function TypingTestInput({
   onBackspaceRemoveLastCharForCurrentWord,
   onChangeAppendChar,
   onFirstInput,
+  disabled,
   ...props
 }: TypingTestInputProps) {
+  const inputRef = useFocus<HTMLInputElement>(!disabled);
+
   return (
       <input
           type="text"
-          autoFocus
           value=""
+          disabled={disabled}
           onPaste={onPastePreventDefault}
           onKeyDown={onBackspaceRemoveLastCharForCurrentWord}
           onChange={(event) => {
@@ -35,6 +39,7 @@ export function TypingTestInput({
 
             onChangeAppendChar(event);
           }}
+          ref={inputRef}
           {...props}
       />
   );

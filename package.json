@@ -11,10 +11,12 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "daisyui": "^2.24.0",
+    "local-storage-superjson": "^1.0.9",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-timer-hook": "^3.0.5"
+    "react-timer-hook": "^3.0.5",
+    "zustand": "^4.1.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.3.1",
