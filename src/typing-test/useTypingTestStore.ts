@@ -2,7 +2,7 @@ import create from "zustand";
 import React, {ChangeEvent} from "react";
 import _ from "lodash";
 
-export interface TypingTestState {
+export interface TypingTestStore {
   inputValue: string,
   modalOpen: boolean,
   resetInputValue: () => void,
@@ -12,7 +12,7 @@ export interface TypingTestState {
   handleModalClose: () => void
 }
 
-export const useTypingTestStore = create<TypingTestState>(set => ({
+export const useTypingTestStore = create<TypingTestStore>(set => ({
   inputValue: "",
   modalOpen: false,
   resetInputValue: () => set(state => ({
