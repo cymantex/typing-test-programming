@@ -2,30 +2,31 @@ import {TypingTestInput} from "./input/TypingTestInput";
 import {TypingTestDiff} from "./diff/TypingTestDiff";
 import _ from "lodash";
 import {loremIpsum} from "./vocabulary/loremIpsum";
-import {useTypingTestInput} from "./input/useTypingTestInput";
 import {TypingTestStats} from "./stats/TypingTestStats";
 import {useTypingTestStats} from "./stats/useTypingTestStats";
 import {TypingTestResultModal} from "./result/TypingTestResultModal";
-import {useState} from "react";
+import {useTypingTestStore} from "./useTypingTestStore";
 
 let vocabulary = _.shuffle(loremIpsum);
 
 export function TypingTest() {
   const {
-    typingTestInputValue,
-    resetTypingTestInputValue,
-    ...typingTestInputProps
-  } = useTypingTestInput();
-  const [typingTestResultsModalOpen, setTypingTestResultsModalOpen] = useState(false);
+    inputValue,
+    modalOpen,
+    handleTimerExpire,
+    handleModalClose,
+    onChangeAppendChar,
+    onBackspaceRemoveLastCharForCurrentWord
+  } = useTypingTestStore();
 
-  const actualWords = typingTestInputValue.split(" ");
+  const actualWords = inputValue.split(" ");
   const expectedWords = vocabulary;
 
   const {startTimer, resetTimer, cpm, wpm, remainingSeconds} = useTypingTestStats({
     actualWords,
     expectedWords,
-    testDurationSeconds: 5,
-    onTimerExpire: () => setTypingTestResultsModalOpen(true)
+    testDurationSeconds: 60,
+    onTimerExpire: handleTimerExpire
   });
 
   return (
@@ -47,22 +48,27 @@ export function TypingTest() {
               expectedWords={expectedWords}
           />
           <TypingTestInput
-              typingTestInputValue={typingTestInputValue}
+              typingTestInputValue={inputValue}
               className="h-24 w-full text-2xl text-center bg-transparent input input-bordered rounded-none"
               onFirstInput={startTimer}
-              disabled={typingTestResultsModalOpen}
-              {...typingTestInputProps}
+              onKeyDown={onBackspaceRemoveLastCharForCurrentWord}
+              onChangeAppendChar={onChangeAppendChar}
+              onPaste={(event) => {
+                // TODO: Would maybe be nice with some Toast here instead :-)
+                console.info("Copy paste cheating is not allowed, sorry!");
+                event.preventDefault();
+              }}
+              disabled={modalOpen}
           />
         </div>
         <TypingTestResultModal
             cpm={cpm}
             wpm={wpm}
-            open={typingTestResultsModalOpen}
+            modalOpen={modalOpen}
             onClose={() => {
               vocabulary = _.shuffle(vocabulary);
-              resetTypingTestInputValue();
               resetTimer();
-              setTypingTestResultsModalOpen(false);
+              handleModalClose();
             }}
         />
       </div>

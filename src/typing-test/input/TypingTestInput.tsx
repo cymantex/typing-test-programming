@@ -1,23 +1,14 @@
-import React, {
-  ChangeEventHandler,
-  ClipboardEventHandler,
-  InputHTMLAttributes,
-  KeyboardEventHandler
-} from "react";
+import React, {ChangeEventHandler, InputHTMLAttributes} from "react";
 import {useFocus} from "../../utils/useFocus";
 
 export interface TypingTestInputProps extends InputHTMLAttributes<HTMLInputElement> {
   typingTestInputValue: string,
-  onPastePreventDefault: ClipboardEventHandler<HTMLInputElement>,
-  onBackspaceRemoveLastCharForCurrentWord: KeyboardEventHandler<HTMLInputElement>,
   onChangeAppendChar: ChangeEventHandler<HTMLInputElement>,
   onFirstInput: () => void
 }
 
 export function TypingTestInput({
   typingTestInputValue,
-  onPastePreventDefault,
-  onBackspaceRemoveLastCharForCurrentWord,
   onChangeAppendChar,
   onFirstInput,
   disabled,
@@ -30,8 +21,6 @@ export function TypingTestInput({
           type="text"
           value=""
           disabled={disabled}
-          onPaste={onPastePreventDefault}
-          onKeyDown={onBackspaceRemoveLastCharForCurrentWord}
           onChange={(event) => {
             if (typingTestInputValue === "") {
               onFirstInput();
