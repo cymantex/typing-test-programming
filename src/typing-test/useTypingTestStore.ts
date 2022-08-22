@@ -1,7 +1,7 @@
 import create from "zustand";
 import React, {ChangeEvent} from "react";
 import _ from "lodash";
-import {loremIpsum} from "./vocabulary/loremIpsum";
+import {typescript} from "./languages/typescript";
 
 export interface TypingTestStore {
   inputValue: string,
@@ -17,7 +17,7 @@ export interface TypingTestStore {
 export const useTypingTestStore = create<TypingTestStore>(set => ({
   inputValue: "",
   modalOpen: false,
-  expectedWords: _.shuffle(loremIpsum),
+  expectedWords: _.shuffle(typescript()),
   resetInputValue: () => set(state => ({
     ...state,
     inputValue: ""

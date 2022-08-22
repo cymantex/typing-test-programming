@@ -9,3 +9,23 @@ export function actualWordsLengthWithoutCurrentWord(actualWords: string[]) {
 
   return actualWords.length - 1;
 }
+
+export function repeat(text: string, times: number): string[] {
+  const repeats = [];
+
+  for (let i = 0; i < times; i++) {
+    repeats.push(text);
+  }
+
+  return repeats;
+}
+
+export function repeatArray(array: string[], times: number) {
+  let repeats: string[] = [];
+
+  for (let i = 0; i < times; i++) {
+    repeats = [...repeats, ...array];
+  }
+
+  return repeats;
+}
