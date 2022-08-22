@@ -11,11 +11,11 @@ export enum Language {
 
 const languageMap = {
   [Language.Java]: {
-    Icon: () => <SiJava/>,
+    Icon: () => <SiJava title={Language.Java}/>,
     getExpectedWords: java
   },
   [Language.Typescript]: {
-    Icon: () => <SiTypescript/>,
+    Icon: () => <SiTypescript title={Language.Typescript}/>,
     getExpectedWords: typescript
   }
 };

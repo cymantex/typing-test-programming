@@ -24,13 +24,13 @@ export function TypingTest() {
   const {startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds} = useTypingTestStats({
     actualWords,
     expectedWords,
-    testDurationSeconds: 60,
+    testDurationSeconds: 5,
     onTimerExpire: handleTimerExpire
   });
 
   return (
       <div>
-        <h1 className="text-3xl lg:text-5xl">Typing speed test - Programming edition</h1>
+        <h1 className="text-2xl md:text-5xl">Typing speed test - Programming</h1>
         <div className="divider"/>
         <TypingTestStats
             className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-4 mb-5 text-center stats"
@@ -75,6 +75,7 @@ export function TypingTest() {
         <TypingTestLanguagePicker
             selectedLanguage={selectedLanguage}
             onLanguageSelect={onLanguageSelect}
+            disabled={inputValue !== ""}
             className="mt-5 flex justify-center"
         />
       </div>

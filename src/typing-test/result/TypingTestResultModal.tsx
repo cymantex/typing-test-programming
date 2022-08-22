@@ -30,7 +30,7 @@ export function TypingTestResultModal({
         <div className="modal-box">
           <h3 className="font-bold text-lg">Results {selectedLanguage}</h3>
           <div className="divider"/>
-          <div className="stats">
+          <div className="stats ml-auto mr-auto w-full text-center">
             <Stat title="WPM" value={wpm}/>
             <Stat title="CPM" value={cpm}/>
             <Stat title="ACCURACY" value={accuracy}/>

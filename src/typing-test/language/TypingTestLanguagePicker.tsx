@@ -5,12 +5,14 @@ import classNames from "classnames";
 
 interface TypingTestLanguagePickerProps extends HTMLAttributes<HTMLElement> {
   selectedLanguage: Language,
-  onLanguageSelect: (language: Language) => void
+  onLanguageSelect: (language: Language) => void,
+  disabled: boolean
 }
 
 export function TypingTestLanguagePicker({
   selectedLanguage,
   onLanguageSelect,
+  disabled,
   ...props
 }: TypingTestLanguagePickerProps) {
   return (
@@ -22,6 +24,7 @@ export function TypingTestLanguagePicker({
                 className={classNames("text-5xl", {
                   "btn-primary": language === selectedLanguage.toString()
                 })}
+                disabled={disabled}
                 onClick={() => onLanguageSelect(toLanguage(language))}
             >
               <LanguageIcon language={toLanguage(language)}/>
