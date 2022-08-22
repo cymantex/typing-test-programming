@@ -30,7 +30,7 @@ export function TypingTest() {
 
   return (
       <div>
-        <h1 className="text-2xl md:text-5xl">Typing speed test - Programming</h1>
+        <h1 className="text-xl md:text-5xl">Typing speed test - Programming</h1>
         <div className="divider"/>
         <TypingTestStats
             className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-4 mb-5 text-center stats"

@@ -9,7 +9,18 @@ export enum Language {
   Typescript = "Typescript"
 }
 
-const languageMap = {
+interface LanguageMapping {
+  [language: string]: {
+    Icon: () => ReactElement,
+    getExpectedWords: () => string[]
+  }
+}
+
+/**
+ * This object should contain everything relevant for the given language. The main idea is that
+ * you should only need to properly define this mapping for any new language added.
+ */
+const languageMap: LanguageMapping = {
   [Language.Java]: {
     Icon: () => <SiJava title={Language.Java}/>,
     getExpectedWords: java
