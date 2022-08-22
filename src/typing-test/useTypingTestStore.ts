@@ -1,15 +1,22 @@
 import create from "zustand";
 import React, {ChangeEvent} from "react";
 import _ from "lodash";
-import {typescript} from "./languages/typescript";
+import {
+  getDefaultLanguage,
+  getExpectedWords,
+  Language,
+  setSelectedLanguage
+} from "./language/Language";
 
 export interface TypingTestStore {
   inputValue: string,
   modalOpen: boolean,
+  selectedLanguage: Language,
   expectedWords: string[],
   resetInputValue: () => void,
   onBackspaceRemoveLastCharForCurrentWord: (event: React.KeyboardEvent<HTMLInputElement>) => void,
   onChangeAppendChar: (event: ChangeEvent<HTMLInputElement>) => void,
+  onLanguageSelect: (language: Language) => void,
   handleTimerExpire: () => void,
   handleModalClose: () => void
 }
@@ -17,7 +24,8 @@ export interface TypingTestStore {
 export const useTypingTestStore = create<TypingTestStore>(set => ({
   inputValue: "",
   modalOpen: false,
-  expectedWords: _.shuffle(typescript()),
+  selectedLanguage: getDefaultLanguage(),
+  expectedWords: _.shuffle(getExpectedWords(getDefaultLanguage())),
   resetInputValue: () => set(state => ({
     ...state,
     inputValue: ""
@@ -43,6 +51,16 @@ export const useTypingTestStore = create<TypingTestStore>(set => ({
     }
 
     return state;
+  }),
+  onLanguageSelect: (language: Language) => set(state => {
+    // noinspection JSIgnoredPromiseFromCall (intentionally set to happen in the background)
+    setSelectedLanguage(language);
+
+    return {
+      ...state,
+      selectedLanguage: language,
+      expectedWords: _.shuffle(getExpectedWords(language))
+    };
   }),
   onChangeAppendChar: (event: ChangeEvent<HTMLInputElement>) => set(state => {
     const value = state.inputValue;

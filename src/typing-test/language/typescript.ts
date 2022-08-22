@@ -54,6 +54,7 @@ export const typescript = ({
   ...repeat("try", commonMultiplier),
   ...repeat("type", veryCommonMultiplier),
   ...repeat("typeof", commonMultiplier),
+  ...repeat("undefined", veryCommonMultiplier),
   ...repeat("void", commonMultiplier),
   ...repeat("while", commonMultiplier),
   ...repeat("with", veryRareMultiplier),

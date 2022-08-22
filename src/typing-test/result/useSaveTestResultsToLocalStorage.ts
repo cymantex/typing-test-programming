@@ -1,11 +1,13 @@
 import {useEffect} from "react";
 import {upsertObject} from "local-storage-superjson";
+import {Language} from "../language/Language";
 
 
 type TypingTestStats = {
   wpm: number,
   cpm: number,
-  accuracy: string
+  accuracy: string,
+  selectedLanguage: Language
 }
 
 type TypingTestResult = {

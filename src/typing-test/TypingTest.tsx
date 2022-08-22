@@ -4,12 +4,15 @@ import {TypingTestStats} from "./stats/TypingTestStats";
 import {useTypingTestStats} from "./stats/useTypingTestStats";
 import {TypingTestResultModal} from "./result/TypingTestResultModal";
 import {useTypingTestStore} from "./useTypingTestStore";
+import {TypingTestLanguagePicker} from "./language/TypingTestLanguagePicker";
 
 export function TypingTest() {
   const {
     inputValue,
     modalOpen,
     expectedWords,
+    selectedLanguage,
+    onLanguageSelect,
     handleTimerExpire,
     handleModalClose,
     onChangeAppendChar,
@@ -30,7 +33,7 @@ export function TypingTest() {
         <h1 className="text-3xl lg:text-5xl">Typing speed test - Programming edition</h1>
         <div className="divider"/>
         <TypingTestStats
-            className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-4 justify-center mb-5 text-center stats"
+            className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-4 mb-5 text-center stats"
             cpm={cpm}
             wpm={wpm}
             accuracy={accuracy}
@@ -63,10 +66,16 @@ export function TypingTest() {
             wpm={wpm}
             accuracy={accuracy}
             modalOpen={modalOpen}
+            selectedLanguage={selectedLanguage}
             onClose={() => {
               resetTimer();
               handleModalClose();
             }}
+        />
+        <TypingTestLanguagePicker
+            selectedLanguage={selectedLanguage}
+            onLanguageSelect={onLanguageSelect}
+            className="mt-5 flex justify-center"
         />
       </div>
   );
