@@ -1,5 +1,6 @@
 import _ from "lodash";
 import {CompletedWordsAndCharsProps} from "./types";
+import {actualWordsLengthWithoutCurrentWord} from "../utils";
 
 export function PreviousWordsAndChars({
   actualWords,
@@ -9,7 +10,7 @@ export function PreviousWordsAndChars({
   ...props
 }: CompletedWordsAndCharsProps) {
   const previouslyCompletedWords = _
-      .slice(actualWords, 0, actualWords.length - 1);
+      .slice(actualWords, 0, actualWordsLengthWithoutCurrentWord(actualWords));
 
   return <div {...props}>{
     previouslyCompletedWords.map((previouslyCompletedWord, i) => {

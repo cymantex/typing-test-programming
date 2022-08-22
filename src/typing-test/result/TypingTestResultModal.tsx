@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import {useFocus} from "../../utils/useFocus";
+import {useFocus} from "../utils/useFocus";
 import {Stat} from "../stats/Stat";
 import {useSaveTestResultsToLocalStorage} from "./useSaveTestResultsToLocalStorage";
 

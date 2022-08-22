@@ -2,6 +2,7 @@ import {useTimer} from "react-timer-hook";
 import {TypingTestStatsProps} from "./TypingTestStats";
 import _ from "lodash";
 import {TypingTestWords} from "../diff/types";
+import {actualWordsLengthWithoutCurrentWord} from "../utils";
 
 interface TypingTestStatsEvent extends TypingTestStatsProps {
   startTimer: () => void,
@@ -28,9 +29,9 @@ export function useTypingTestStats({
   });
 
   const correctWords = _(expectedWords)
-      // Using actualWords.length instead here would mean the CPM/WPM updates immediately when
+      // Using the full actualWords.length instead would mean the CPM/WPM updates immediately when
       // the user reaches the end of the current word rather than when submitting it.
-      .slice(0, actualWords.length - 1)
+      .slice(0, actualWordsLengthWithoutCurrentWord(actualWords))
       .filter((expectedWord, i) => expectedWord === actualWords[i])
       .toJSON();
 

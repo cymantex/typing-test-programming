@@ -1,5 +1,5 @@
 import React, {ChangeEventHandler, InputHTMLAttributes} from "react";
-import {useFocus} from "../../utils/useFocus";
+import {useFocus} from "../utils/useFocus";
 
 export interface TypingTestInputProps extends InputHTMLAttributes<HTMLInputElement> {
   typingTestInputValue: string,

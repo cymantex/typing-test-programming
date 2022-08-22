@@ -1,13 +1,14 @@
 import _ from "lodash";
+import {actualWordsLengthWithoutCurrentWord} from "../utils";
 
 export function calcCurrentWordDiff(actualWords: string[], expectedWords: string[]) {
-  const actualWord = actualWords[actualWords.length - 1];
-  const expectedWord = expectedWords.length > actualWords.length - 1
-      ? expectedWords[actualWords.length - 1]
+  const actualWord = _.last(actualWords);
+  const expectedWord = expectedWords.length > actualWordsLengthWithoutCurrentWord(actualWords)
+      ? expectedWords[actualWordsLengthWithoutCurrentWord(actualWords)]
       : "";
 
   const expectedChars = expectedWord.split("");
-  const actualChars = actualWord.split("");
+  const actualChars = actualWord ? actualWord.split("") : [];
 
   let firstIncorrectCharIndex = expectedChars
       .findIndex((expectedChar, i) => actualChars[i] !== expectedChar);
