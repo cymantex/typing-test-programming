@@ -18,7 +18,7 @@ export function TypingTest() {
 
   const actualWords = inputValue.split(" ");
 
-  const {startTimer, resetTimer, cpm, wpm, remainingSeconds} = useTypingTestStats({
+  const {startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds} = useTypingTestStats({
     actualWords,
     expectedWords,
     testDurationSeconds: 60,
@@ -30,9 +30,10 @@ export function TypingTest() {
         <h1 className="text-3xl lg:text-5xl">Typing speed test - Programming edition</h1>
         <div className="divider"/>
         <TypingTestStats
-            className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-3 justify-center mb-5 text-center stats"
+            className="max-w-lg ml-auto mr-auto grid grid-flow-col grid-cols-4 justify-center mb-5 text-center stats"
             cpm={cpm}
             wpm={wpm}
+            accuracy={accuracy}
             remainingSeconds={remainingSeconds}
         />
         <div className="relative overflow-hidden font-mono">
@@ -60,6 +61,7 @@ export function TypingTest() {
         <TypingTestResultModal
             cpm={cpm}
             wpm={wpm}
+            accuracy={accuracy}
             modalOpen={modalOpen}
             onClose={() => {
               resetTimer();

@@ -38,6 +38,7 @@ export function useTypingTestStats({
   return {
     wpm: calcCountPerMinute(correctWords.length, testDurationSeconds),
     cpm: calcCountPerMinute(correctWords.join("").length, testDurationSeconds),
+    accuracy: calcAccuracy(actualWords, correctWords),
     resetTimer: () => {
       restart(appendSecondsToCurrentDateTime(testDurationSeconds), false);
     },
@@ -51,6 +52,18 @@ export function useTypingTestStats({
 function calcCountPerMinute(count: number, testDurationSeconds: number) {
   // Using .ceil here to make the user slightly more happy about their result :-)
   return Math.ceil(count / (testDurationSeconds / 60));
+}
+
+function calcAccuracy(actualWords: string[], correctWords: string[]): string {
+  const actualWordsLength = actualWordsLengthWithoutCurrentWord(actualWords);
+
+  if (actualWordsLength === 0) {
+    return "0%";
+  }
+
+  const accuracy = ((correctWords.length / actualWordsLength) * 100).toFixed(0);
+
+  return `${accuracy}%`;
 }
 
 function appendSecondsToCurrentDateTime(testDurationSeconds: number) {

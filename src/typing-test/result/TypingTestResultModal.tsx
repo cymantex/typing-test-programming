@@ -6,6 +6,7 @@ import {useSaveTestResultsToLocalStorage} from "./useSaveTestResultsToLocalStora
 export interface TypingTestResultModalProps {
   cpm?: number,
   wpm?: number,
+  accuracy?: string,
   modalOpen: boolean,
   onClose: () => void
 }
@@ -13,13 +14,13 @@ export interface TypingTestResultModalProps {
 export function TypingTestResultModal({
   wpm = 0,
   cpm = 0,
+  accuracy = "0%",
   modalOpen,
   onClose
 }: TypingTestResultModalProps) {
   const buttonRef = useFocus<HTMLButtonElement>(modalOpen);
 
-  // TODO: accuracy
-  useSaveTestResultsToLocalStorage(modalOpen, {wpm, cpm, accuracy: ""});
+  useSaveTestResultsToLocalStorage(modalOpen, {wpm, cpm, accuracy});
 
   return (
       <div className={classNames("modal", {"modal-open": modalOpen})}>
@@ -29,6 +30,7 @@ export function TypingTestResultModal({
           <div className="stats">
             <Stat title="WPM" value={wpm}/>
             <Stat title="CPM" value={cpm}/>
+            <Stat title="ACCURACY" value={accuracy}/>
           </div>
           <div className="divider"/>
           <div className="modal-action">
