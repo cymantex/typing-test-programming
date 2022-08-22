@@ -8,6 +8,6 @@ module.exports = {
       require("daisyui")
   ],
   daisyui: {
-    themes: ["business", "corporate"],
+    themes: ["business", "autumn"],
   }
 };

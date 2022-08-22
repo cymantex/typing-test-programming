@@ -5,6 +5,8 @@ import {useTypingTestStats} from "./stats/useTypingTestStats";
 import {TypingTestResultModal} from "./result/TypingTestResultModal";
 import {useTypingTestStore} from "./useTypingTestStore";
 import {TypingTestLanguagePicker} from "./language/TypingTestLanguagePicker";
+import {useThemeToggle} from "./theme/useThemeToggle";
+import {ThemeButton} from "./theme/ThemeButton";
 
 export function TypingTest() {
   const {
@@ -20,11 +22,12 @@ export function TypingTest() {
   } = useTypingTestStore();
 
   const actualWords = inputValue.split(" ");
+  const {theme, toggleTheme} = useThemeToggle();
 
   const {startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds} = useTypingTestStats({
     actualWords,
     expectedWords,
-    testDurationSeconds: 5,
+    testDurationSeconds: 60,
     onTimerExpire: handleTimerExpire
   });
 
@@ -55,7 +58,7 @@ export function TypingTest() {
               onChangeAppendChar={onChangeAppendChar}
               onPaste={(event) => {
                 // TODO: Would maybe be nice with some Toast here instead :-)
-                console.info("Copy paste cheating is not allowed, sorry!");
+                console.log("Copy paste cheating is not allowed, sorry!");
                 event.preventDefault();
               }}
               disabled={modalOpen}
@@ -77,6 +80,11 @@ export function TypingTest() {
             onLanguageSelect={onLanguageSelect}
             disabled={inputValue !== ""}
             className="mt-5 flex justify-center"
+        />
+        <ThemeButton
+            className="absolute bottom-5 right-5 lg:bottom-auto lg:top-5 lg:right-5 text-4xl"
+            theme={theme}
+            toggleTheme={toggleTheme}
         />
       </div>
   );
