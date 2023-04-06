@@ -1,3 +1,4 @@
+import React from "react";
 import { java } from "./java";
 import { SiJava, SiTypescript } from "react-icons/all";
 import { typescript } from "./typescript";

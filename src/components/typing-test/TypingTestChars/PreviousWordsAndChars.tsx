@@ -1,3 +1,4 @@
+import React from "react";
 import _ from "lodash";
 import { CompletedWordsAndCharsProps } from "./types";
 import { actualWordsLengthWithoutCurrentWord } from "../../../utils/utils";

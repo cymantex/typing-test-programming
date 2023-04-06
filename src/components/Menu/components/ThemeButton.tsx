@@ -1,3 +1,4 @@
+import React from "react";
 import { BsMoon, BsSun } from "react-icons/all";
 import { Theme } from "../useThemeToggle";
 import { ButtonHTMLAttributes } from "react";

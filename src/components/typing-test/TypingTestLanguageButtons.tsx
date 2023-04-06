@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import React, { HTMLAttributes } from "react";
 import { Button } from "../Button";
 import { Language, toLanguage } from "../../utils/language/utils";
 import classNames from "classnames";

@@ -1,3 +1,4 @@
+import React from "react";
 import { Theme, useThemeToggle } from "./useThemeToggle";
 import { ChartButton } from "./components/ChartButton";
 import { ThemeButton } from "./components/ThemeButton";

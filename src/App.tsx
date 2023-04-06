@@ -1,3 +1,4 @@
+import React from "react";
 import { TypingTestInput } from "./components/typing-test/TypingTestInput";
 import { TypingTestChars } from "./components/typing-test/TypingTestChars/TypingTestChars";
 import { TypingTestStats } from "./components/typing-test/TypingTestStats/TypingTestStats";
