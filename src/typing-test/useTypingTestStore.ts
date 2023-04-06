@@ -10,25 +10,33 @@ import {
 
 export interface TypingTestStore {
   inputValue: string,
-  modalOpen: boolean,
+  resultModalOpen: boolean,
+  chartModalOpen: boolean,
   selectedLanguage: Language,
   expectedWords: string[],
   resetInputValue: () => void,
   onBackspaceRemoveLastCharForCurrentWord: (event: React.KeyboardEvent<HTMLInputElement>) => void,
   onChangeAppendChar: (event: ChangeEvent<HTMLInputElement>) => void,
   onLanguageSelect: (language: Language) => void,
+  onOpenChartModal: () => void,
   handleTimerExpire: () => void,
-  handleModalClose: () => void
+  handleResultModalClose: () => void,
+  handleChartModalClose: () => void
 }
 
 export const useTypingTestStore = create<TypingTestStore>(set => ({
   inputValue: "",
-  modalOpen: false,
+  resultModalOpen: false,
+  chartModalOpen: false,
   selectedLanguage: getDefaultLanguage(),
   expectedWords: _.shuffle(getExpectedWords(getDefaultLanguage())),
   resetInputValue: () => set(state => ({
     ...state,
     inputValue: ""
+  })),
+  onOpenChartModal: () => set(state => ({
+    ...state,
+    chartModalOpen: true
   })),
   onBackspaceRemoveLastCharForCurrentWord: (event: React.KeyboardEvent<HTMLInputElement>) => set(state => {
     const value = state.inputValue;
@@ -79,13 +87,17 @@ export const useTypingTestStore = create<TypingTestStore>(set => ({
   }),
   handleTimerExpire: () => set(state => ({
     ...state,
-    modalOpen: true
+    resultModalOpen: true
   })),
-  handleModalClose: () => set(state => ({
+  handleResultModalClose: () => set(state => ({
     ...state,
     expectedWords: _.shuffle(state.expectedWords),
-    modalOpen: false,
+    resultModalOpen: false,
     inputValue: ""
+  })),
+  handleChartModalClose: () => set(state => ({
+    ...state,
+    chartModalOpen: false
   }))
 }));
 

@@ -2,27 +2,32 @@ import {TypingTestInput} from "./input/TypingTestInput";
 import {TypingTestDiff} from "./diff/TypingTestDiff";
 import {TypingTestStats} from "./stats/TypingTestStats";
 import {useTypingTestStats} from "./stats/useTypingTestStats";
-import {TypingTestResultModal} from "./result/TypingTestResultModal";
+import {TypingTestResultModal} from "./result/TypingTestResultModal/TypingTestResultModal";
 import {useTypingTestStore} from "./useTypingTestStore";
 import {TypingTestLanguagePicker} from "./language/TypingTestLanguagePicker";
-import {useThemeToggle} from "./theme/useThemeToggle";
-import {ThemeButton} from "./theme/ThemeButton";
+import {TypingTestResultCharts} from "./result/TypingTestResultCharts/TypingTestResultCharts";
+import {Menu} from "./Menu/Menu";
+import {
+  TypingTestResultChartModal
+} from "./result/TypingTestResultChartModal/TypingTestResultChartModal";
 
 export function TypingTest() {
   const {
     inputValue,
-    modalOpen,
+    resultModalOpen,
+    chartModalOpen,
     expectedWords,
     selectedLanguage,
+    onOpenChartModal,
     onLanguageSelect,
     handleTimerExpire,
-    handleModalClose,
+    handleResultModalClose,
+    handleChartModalClose,
     onChangeAppendChar,
-    onBackspaceRemoveLastCharForCurrentWord
+    onBackspaceRemoveLastCharForCurrentWord,
   } = useTypingTestStore();
 
   const actualWords = inputValue.split(" ");
-  const {theme, toggleTheme} = useThemeToggle();
 
   const {startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds} = useTypingTestStats({
     actualWords,
@@ -61,30 +66,33 @@ export function TypingTest() {
                 console.log("Copy paste cheating is not allowed, sorry!");
                 event.preventDefault();
               }}
-              disabled={modalOpen}
+              disabled={resultModalOpen}
           />
         </div>
-        <TypingTestResultModal
-            cpm={cpm}
-            wpm={wpm}
-            accuracy={accuracy}
-            modalOpen={modalOpen}
-            selectedLanguage={selectedLanguage}
-            onClose={() => {
-              resetTimer();
-              handleModalClose();
-            }}
-        />
         <TypingTestLanguagePicker
             selectedLanguage={selectedLanguage}
             onLanguageSelect={onLanguageSelect}
             disabled={inputValue !== ""}
             className="mt-5 flex justify-center"
         />
-        <ThemeButton
-            className="absolute bottom-5 right-5 lg:bottom-auto lg:top-5 lg:right-5 text-4xl"
-            theme={theme}
-            toggleTheme={toggleTheme}
+        <Menu
+            onChartButtonClick={onOpenChartModal}
+        />
+        <TypingTestResultChartModal
+            open={chartModalOpen}
+            selectedLanguage={selectedLanguage}
+            onClose={handleChartModalClose}
+        />
+        <TypingTestResultModal
+            cpm={cpm}
+            wpm={wpm}
+            accuracy={accuracy}
+            modalOpen={resultModalOpen}
+            selectedLanguage={selectedLanguage}
+            onClose={() => {
+              resetTimer();
+              handleResultModalClose();
+            }}
         />
       </div>
   );
