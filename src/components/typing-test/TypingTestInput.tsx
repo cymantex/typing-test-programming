@@ -1,15 +1,18 @@
 import React, {ChangeEventHandler, InputHTMLAttributes} from "react";
-import {useFocus} from "../utils/useFocus";
+import {useFocus} from "../../hooks/useFocus";
 
 export interface TypingTestInputProps extends InputHTMLAttributes<HTMLInputElement> {
   typingTestInputValue: string,
-  onChangeAppendChar: ChangeEventHandler<HTMLInputElement>,
+  onChange: ChangeEventHandler<HTMLInputElement>,
   onFirstInput: () => void
 }
 
+/**
+ * Is only used to display a caret and notify what the user is typing.
+ */
 export function TypingTestInput({
   typingTestInputValue,
-  onChangeAppendChar,
+  onChange,
   onFirstInput,
   disabled,
   ...props
@@ -26,7 +29,7 @@ export function TypingTestInput({
               onFirstInput();
             }
 
-            onChangeAppendChar(event);
+            onChange(event);
           }}
           ref={inputRef}
           {...props}

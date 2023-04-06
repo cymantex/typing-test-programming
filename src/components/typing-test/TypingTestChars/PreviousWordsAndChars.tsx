@@ -1,6 +1,6 @@
 import _ from "lodash";
 import {CompletedWordsAndCharsProps} from "./types";
-import {actualWordsLengthWithoutCurrentWord} from "../utils";
+import {actualWordsLengthWithoutCurrentWord} from "../../../utils/utils";
 
 export function PreviousWordsAndChars({
   actualWords,

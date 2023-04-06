@@ -1,6 +1,6 @@
-import {Theme, useThemeToggle} from "../theme/useThemeToggle";
-import {ChartButton} from "./ChartButton";
-import {ThemeButton} from "../theme/ThemeButton";
+import {Theme, useThemeToggle} from "./useThemeToggle";
+import {ChartButton} from "./components/ChartButton";
+import {ThemeButton} from "./components/ThemeButton";
 
 interface MenuProps {
   onChartButtonClick: () => void;

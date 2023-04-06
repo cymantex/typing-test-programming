@@ -1,8 +1,8 @@
 import {useTimer} from "react-timer-hook";
 import {TypingTestStatsProps} from "./TypingTestStats";
 import _ from "lodash";
-import {TypingTestWords} from "../diff/types";
-import {actualWordsLengthWithoutCurrentWord} from "../utils";
+import {TypingTestWords} from "../TypingTestChars/types";
+import {actualWordsLengthWithoutCurrentWord} from "../../../utils/utils";
 
 interface TypingTestStatsEvent extends TypingTestStatsProps {
   startTimer: () => void,

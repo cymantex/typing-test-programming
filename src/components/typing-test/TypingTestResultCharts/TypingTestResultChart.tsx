@@ -19,16 +19,11 @@ export function TypingTestResultChart({data}: TypingTestResultChartProps) {
   if (data.length === 0) return null;
 
   return (
-      <ResponsiveContainer width="100%">
-        <LineChart
-            width={730}
-            height={250}
-            data={data}
-        >
+      <ResponsiveContainer width="95%" height={250}>
+        <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3"/>
           <XAxis dataKey="date" hide/>
           <YAxis/>
-          {/*<Area name={name} dataKey={name}/>*/}
           <Tooltip labelFormatter={toDateTime} contentStyle={{
             backgroundColor: "hsl(var(--b1))"
           }}/>
@@ -38,6 +33,5 @@ export function TypingTestResultChart({data}: TypingTestResultChartProps) {
           <Line type="monotone" dataKey="accuracy" stroke="red" dot={false}/>
         </LineChart>
       </ResponsiveContainer>
-
   );
 }

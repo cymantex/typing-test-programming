@@ -20,7 +20,7 @@ interface LanguageMapping {
  * This object should contain everything relevant for the given language. The main idea is that
  * you should only need to properly define this mapping for any new language added.
  */
-const languageMap: LanguageMapping = {
+export const languageMap: LanguageMapping = {
   [Language.Java]: {
     Icon: () => <SiJava title={Language.Java}/>,
     getExpectedWords: java
@@ -50,11 +50,6 @@ export async function setSelectedLanguage(language: Language): Promise<void> {
     setObject("language", language);
     resolve();
   });
-}
-
-export function LanguageIcon({language}: { language: string }): ReactElement {
-  const Icon = languageMap[toLanguage(language)].Icon;
-  return <Icon/>;
 }
 
 export function getExpectedWords(language: string): string[] {

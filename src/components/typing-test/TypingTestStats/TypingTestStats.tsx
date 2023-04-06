@@ -1,5 +1,5 @@
 import React, {HTMLAttributes} from "react";
-import {Stat} from "./Stat";
+import {Stat} from "../../Stat";
 
 export interface TypingTestStatsProps extends HTMLAttributes<HTMLElement> {
   remainingSeconds?: number,

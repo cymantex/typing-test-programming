@@ -3,7 +3,7 @@ import {RemainingCharsProps, TypingTestDiffProps, TypingTestWords} from "./types
 import _ from "lodash";
 import {calcCurrentWordDiff} from "./calcCurrentWordDiff";
 
-export function TypingTestDiff({
+export function TypingTestChars({
   actualWords,
   expectedWords,
   previousWordsAndCharsClassName,

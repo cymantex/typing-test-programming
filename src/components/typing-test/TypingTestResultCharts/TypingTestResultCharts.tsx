@@ -1,5 +1,5 @@
 import {getAllTestResults} from "../TypingTestResultModal/useSaveTestResults";
-import {Language} from "../../language/Language";
+import {Language} from "../../../utils/language/utils";
 import {TypingTestResultChart} from "./TypingTestResultChart";
 import {TypingTestRechartData} from "./types";
 import {toRechartDataList} from "./utils";

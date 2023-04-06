@@ -1,8 +1,8 @@
 import {BsMoon, BsSun} from "react-icons/all";
-import {Theme} from "./useThemeToggle";
+import {Theme} from "../useThemeToggle";
 import {ButtonHTMLAttributes} from "react";
 
-interface ThemeButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+interface ThemeButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   toggleTheme: () => void,
   theme: Theme
 }

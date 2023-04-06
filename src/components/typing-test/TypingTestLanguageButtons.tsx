@@ -1,7 +1,8 @@
 import {HTMLAttributes} from "react";
-import {Button} from "./Button";
-import {Language, LanguageIcon, toLanguage} from "./Language";
+import {Button} from "../Button";
+import {Language, toLanguage} from "../../utils/language/utils";
 import classNames from "classnames";
+import {LanguageIcon} from "../LanguageIcon";
 
 interface TypingTestLanguagePickerProps extends HTMLAttributes<HTMLElement> {
   selectedLanguage: Language,
@@ -9,7 +10,7 @@ interface TypingTestLanguagePickerProps extends HTMLAttributes<HTMLElement> {
   disabled: boolean
 }
 
-export function TypingTestLanguagePicker({
+export function TypingTestLanguageButtons({
   selectedLanguage,
   onLanguageSelect,
   disabled,
@@ -17,9 +18,9 @@ export function TypingTestLanguagePicker({
 }: TypingTestLanguagePickerProps) {
   return (
       <div {...props}>
-        {Object.keys(Language).map((language, i) => (
+        {Object.keys(Language).map((language) => (
             <Button
-                key={i}
+                key={language}
                 title={language}
                 className={classNames("text-5xl", {
                   "btn-primary": language === selectedLanguage.toString()

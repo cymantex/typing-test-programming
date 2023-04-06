@@ -1,7 +1,7 @@
-import {Stat} from "../../stats/Stat";
+import {Stat} from "../../Stat";
 import {useSaveTestResults} from "./useSaveTestResults";
-import {Language} from "../../language/Language";
-import {Modal} from "../../components/Modal";
+import {Language} from "../../../utils/language/utils";
+import {Modal} from "../../Modal";
 
 export interface TypingTestResultModalProps {
   cpm?: number,
@@ -23,7 +23,7 @@ export function TypingTestResultModal({
   useSaveTestResults(modalOpen, {wpm, cpm, accuracy, selectedLanguage});
 
   return (
-      <Modal open={modalOpen} title={selectedLanguage} onKeyDown={event => {
+      <Modal isOpen={modalOpen} title={selectedLanguage} onKeyDown={event => {
         // Preventing the modal from being closed on space bar as the user will
         // be constantly pressing it while playing the game.
         if (event.key === " ") {

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import {actualWordsLengthWithoutCurrentWord} from "../utils";
+import {actualWordsLengthWithoutCurrentWord} from "../../../utils/utils";
 
 export function calcCurrentWordDiff(actualWords: string[], expectedWords: string[]) {
   const actualWord = _.last(actualWords);

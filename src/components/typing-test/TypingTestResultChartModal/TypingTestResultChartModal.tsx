@@ -1,20 +1,20 @@
-import {Modal} from "../../components/Modal";
+import {Modal} from "../../Modal";
 import {TypingTestResultCharts} from "../TypingTestResultCharts/TypingTestResultCharts";
-import {Language} from "../../language/Language";
+import {Language} from "../../../utils/language/utils";
 
 interface TypingTestResultChartModalProps {
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
   selectedLanguage: Language;
 }
 
 export function TypingTestResultChartModal({
-  open,
+  isOpen,
   onClose,
   selectedLanguage
 }: TypingTestResultChartModalProps) {
   return (
-      <Modal title={"Previous results: " + selectedLanguage} open={open} onClose={onClose}>
+      <Modal title={"Previous results: " + selectedLanguage} isOpen={isOpen} onClose={onClose}>
         <TypingTestResultCharts selectedLanguage={selectedLanguage}/>
       </Modal>
   );
