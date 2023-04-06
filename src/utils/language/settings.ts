@@ -1,10 +1,10 @@
 export interface VocabularySettings {
-  extremelyCommonMultiplier: number,
-  veryCommonMultiplier: number,
-  commonMultiplier: number,
-  rareMultiplier: number,
-  veryRareMultiplier: number,
-  vocabularyMultiplier: number
+  extremelyCommonMultiplier: number;
+  veryCommonMultiplier: number;
+  commonMultiplier: number;
+  rareMultiplier: number;
+  veryRareMultiplier: number;
+  vocabularyMultiplier: number;
 }
 
 export const defaultSettings: VocabularySettings = {
@@ -13,5 +13,5 @@ export const defaultSettings: VocabularySettings = {
   commonMultiplier: 3,
   rareMultiplier: 2,
   veryRareMultiplier: 1,
-  vocabularyMultiplier: 5
+  vocabularyMultiplier: 5,
 };

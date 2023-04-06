@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 
 export function useTypingTestResultModal() {
   const [isOpen, setOpen] = useState(false);
@@ -11,5 +11,5 @@ export function useTypingTestResultModal() {
     setOpen(false);
   };
 
-  return {isOpen, open, close};
+  return { isOpen, open, close };
 }

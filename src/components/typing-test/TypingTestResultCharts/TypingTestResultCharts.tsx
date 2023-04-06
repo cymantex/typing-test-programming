@@ -1,18 +1,19 @@
-import {getAllTestResults} from "../TypingTestResultModal/useSaveTestResults";
-import {Language} from "../../../utils/language/utils";
-import {TypingTestResultChart} from "./TypingTestResultChart";
-import {TypingTestRechartData} from "./types";
-import {toRechartDataList} from "./utils";
+import { getAllTestResults } from "../TypingTestResultModal/useSaveTestResults";
+import { Language } from "../../../utils/language/utils";
+import { TypingTestResultChart } from "./TypingTestResultChart";
+import { TypingTestRechartData } from "./types";
+import { toRechartDataList } from "./utils";
 
 interface TypingTestResultProps {
-  selectedLanguage: Language
+  selectedLanguage: Language;
 }
 
-export function TypingTestResultCharts({selectedLanguage}: TypingTestResultProps) {
+export function TypingTestResultCharts({
+  selectedLanguage,
+}: TypingTestResultProps) {
   const results = getAllTestResults(selectedLanguage);
-  const typingTestRechartDataList: TypingTestRechartData[] = toRechartDataList(results);
+  const typingTestRechartDataList: TypingTestRechartData[] =
+    toRechartDataList(results);
 
-  return (
-      <TypingTestResultChart data={typingTestRechartDataList}/>
-  );
+  return <TypingTestResultChart data={typingTestRechartDataList} />;
 }

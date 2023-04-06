@@ -1,13 +1,13 @@
-import {HTMLAttributes} from "react";
-import {Button} from "../Button";
-import {Language, toLanguage} from "../../utils/language/utils";
+import { HTMLAttributes } from "react";
+import { Button } from "../Button";
+import { Language, toLanguage } from "../../utils/language/utils";
 import classNames from "classnames";
-import {LanguageIcon} from "../LanguageIcon";
+import { LanguageIcon } from "../LanguageIcon";
 
 interface TypingTestLanguagePickerProps extends HTMLAttributes<HTMLElement> {
-  selectedLanguage: Language,
-  onLanguageSelect: (language: Language) => void,
-  disabled: boolean
+  selectedLanguage: Language;
+  onLanguageSelect: (language: Language) => void;
+  disabled: boolean;
 }
 
 export function TypingTestLanguageButtons({
@@ -17,20 +17,20 @@ export function TypingTestLanguageButtons({
   ...props
 }: TypingTestLanguagePickerProps) {
   return (
-      <div {...props}>
-        {Object.keys(Language).map((language) => (
-            <Button
-                key={language}
-                title={language}
-                className={classNames("text-5xl", {
-                  "btn-primary": language === selectedLanguage.toString()
-                })}
-                disabled={disabled}
-                onClick={() => onLanguageSelect(toLanguage(language))}
-            >
-              <LanguageIcon language={toLanguage(language)}/>
-            </Button>
-        ))}
-      </div>
+    <div {...props}>
+      {Object.keys(Language).map((language) => (
+        <Button
+          key={language}
+          title={language}
+          className={classNames("text-5xl", {
+            "btn-primary": language === selectedLanguage.toString(),
+          })}
+          disabled={disabled}
+          onClick={() => onLanguageSelect(toLanguage(language))}
+        >
+          <LanguageIcon language={toLanguage(language)} />
+        </Button>
+      ))}
+    </div>
   );
 }

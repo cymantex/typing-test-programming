@@ -1,11 +1,11 @@
-import React, {HTMLAttributes} from "react";
-import {Stat} from "../../Stat";
+import React, { HTMLAttributes } from "react";
+import { Stat } from "../../Stat";
 
 export interface TypingTestStatsProps extends HTMLAttributes<HTMLElement> {
-  remainingSeconds?: number,
-  cpm?: number,
-  wpm?: number,
-  accuracy?: string
+  remainingSeconds?: number;
+  cpm?: number;
+  wpm?: number;
+  accuracy?: string;
 }
 
 export function TypingTestStats({
@@ -16,11 +16,11 @@ export function TypingTestStats({
   ...props
 }: TypingTestStatsProps) {
   return (
-      <div {...props}>
-        <Stat title="SECONDS" value={remainingSeconds}/>
-        <Stat title="CPM" value={cpm}/>
-        <Stat title="WPM" value={wpm}/>
-        <Stat title="ACCURACY" value={accuracy}/>
-      </div>
+    <div {...props}>
+      <Stat title="SECONDS" value={remainingSeconds} />
+      <Stat title="CPM" value={cpm} />
+      <Stat title="WPM" value={wpm} />
+      <Stat title="ACCURACY" value={accuracy} />
+    </div>
   );
 }

@@ -1,19 +1,19 @@
-import {java} from "./java";
-import {SiJava, SiTypescript} from "react-icons/all";
-import {typescript} from "./typescript";
-import {ReactElement} from "react";
-import {getObject, setObject} from "local-storage-superjson";
+import { java } from "./java";
+import { SiJava, SiTypescript } from "react-icons/all";
+import { typescript } from "./typescript";
+import { ReactElement } from "react";
+import { getObject, setObject } from "local-storage-superjson";
 
 export enum Language {
   Java = "Java",
-  Typescript = "Typescript"
+  Typescript = "Typescript",
 }
 
 interface LanguageMapping {
   [language: string]: {
-    Icon: () => ReactElement,
-    getExpectedWords: () => string[]
-  }
+    Icon: () => ReactElement;
+    getExpectedWords: () => string[];
+  };
 }
 
 /**
@@ -22,13 +22,13 @@ interface LanguageMapping {
  */
 export const languageMap: LanguageMapping = {
   [Language.Java]: {
-    Icon: () => <SiJava title={Language.Java}/>,
-    getExpectedWords: java
+    Icon: () => <SiJava title={Language.Java} />,
+    getExpectedWords: java,
   },
   [Language.Typescript]: {
-    Icon: () => <SiTypescript title={Language.Typescript}/>,
-    getExpectedWords: typescript
-  }
+    Icon: () => <SiTypescript title={Language.Typescript} />,
+    getExpectedWords: typescript,
+  },
 };
 
 export function toLanguage(language: string): Language {
@@ -46,7 +46,7 @@ export function getDefaultLanguage(): Language {
 }
 
 export async function setSelectedLanguage(language: Language): Promise<void> {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setObject("language", language);
     resolve();
   });

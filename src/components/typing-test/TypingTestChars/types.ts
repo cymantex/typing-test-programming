@@ -1,20 +1,24 @@
-import {HTMLAttributes} from "react";
+import { HTMLAttributes } from "react";
 
 export interface TypingTestWords {
-  actualWords: string[],
-  expectedWords: string[]
+  actualWords: string[];
+  expectedWords: string[];
 }
 
-export interface TypingTestDiffProps extends TypingTestWords, HTMLAttributes<HTMLElement> {
-  previousWordsAndCharsClassName: string,
-  remainingCharsClassName: string
+export interface TypingTestDiffProps
+  extends TypingTestWords,
+    HTMLAttributes<HTMLElement> {
+  previousWordsAndCharsClassName: string;
+  remainingCharsClassName: string;
 }
 
 export interface RemainingCharsProps extends HTMLAttributes<HTMLElement> {
-  remainingChars: string[]
+  remainingChars: string[];
 }
 
-export interface CompletedWordsAndCharsProps extends TypingTestWords, HTMLAttributes<HTMLElement> {
-  correctChars: string[],
-  incorrectChars: string[]
+export interface CompletedWordsAndCharsProps
+  extends TypingTestWords,
+    HTMLAttributes<HTMLElement> {
+  correctChars: string[];
+  incorrectChars: string[];
 }
