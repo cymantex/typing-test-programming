@@ -40,7 +40,5 @@ function getDaisyUIThemeName(theme: Theme) {
 export function setDataThemeOnHtmlElement(theme: Theme | null) {
   if (!theme) return;
 
-  document
-    .getElementsByTagName("html")[0]
-    ?.setAttribute("data-theme", getDaisyUIThemeName(theme));
+  document.getElementsByTagName("html")[0]?.setAttribute("data-theme", getDaisyUIThemeName(theme));
 }

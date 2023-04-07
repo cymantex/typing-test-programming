@@ -25,13 +25,12 @@ export function App() {
 
   const actualWords = inputValue.split(" ");
 
-  const { startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds } =
-    useTypingTestStats({
-      actualWords,
-      expectedWords,
-      testDurationSeconds: 60,
-      onTimerExpire: handleTimerExpire,
-    });
+  const { startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds } = useTypingTestStats({
+    actualWords,
+    expectedWords,
+    testDurationSeconds: 60,
+    onTimerExpire: handleTimerExpire,
+  });
 
   const typingTestResultModal = useTypingTestResultModal();
 

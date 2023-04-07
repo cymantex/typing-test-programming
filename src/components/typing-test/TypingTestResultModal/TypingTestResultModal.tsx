@@ -1,7 +1,7 @@
 import React from "react";
 import { Stat } from "../../Stat";
 import { useSaveTestResults } from "./useSaveTestResults";
-import { Language } from "../../../utils/language/utils";
+import { Language } from "@/utils/language/utils";
 import { Modal } from "../../Modal";
 
 export interface TypingTestResultModalProps {

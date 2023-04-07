@@ -1,5 +1,5 @@
 import React from "react";
-import { java } from "./java";
+import { java } from "./java/java";
 import { SiJava, SiTypescript } from "react-icons/all";
 import { typescript } from "./typescript";
 import { ReactElement } from "react";

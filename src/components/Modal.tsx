@@ -11,13 +11,7 @@ export interface ModalProps {
   children: ReactElement;
 }
 
-export function Modal({
-  isOpen,
-  title,
-  onClose,
-  children,
-  onKeyDown,
-}: ModalProps) {
+export function Modal({ isOpen, title, onClose, children, onKeyDown }: ModalProps) {
   const buttonRef = useFocus<HTMLButtonElement>(isOpen);
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "../../Modal";
 import { TypingTestResultCharts } from "../TypingTestResultCharts/TypingTestResultCharts";
-import { Language } from "../../../utils/language/utils";
+import { Language } from "@/utils/language/utils";
 
 interface TypingTestResultChartModalProps {
   isOpen: boolean;
@@ -15,11 +15,7 @@ export function TypingTestResultChartModal({
   selectedLanguage,
 }: TypingTestResultChartModalProps) {
   return (
-    <Modal
-      title={"Previous results: " + selectedLanguage}
-      isOpen={isOpen}
-      onClose={onClose}
-    >
+    <Modal title={"Previous results: " + selectedLanguage} isOpen={isOpen} onClose={onClose}>
       <TypingTestResultCharts selectedLanguage={selectedLanguage} />
     </Modal>
   );

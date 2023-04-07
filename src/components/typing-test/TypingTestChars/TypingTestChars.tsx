@@ -1,10 +1,6 @@
 import React from "react";
 import { PreviousWordsAndChars } from "./PreviousWordsAndChars";
-import {
-  RemainingCharsProps,
-  TypingTestDiffProps,
-  TypingTestWords,
-} from "./types";
+import { RemainingCharsProps, TypingTestDiffProps, TypingTestWords } from "./types";
 import _ from "lodash";
 import { calcCurrentWordDiff } from "./calcCurrentWordDiff";
 
@@ -29,31 +25,18 @@ export function TypingTestChars({
         correctChars={correctChars}
         incorrectChars={incorrectChars}
       />
-      <RemainingChars
-        className={remainingCharsClassName}
-        remainingChars={remainingChars}
-      />
+      <RemainingChars className={remainingCharsClassName} remainingChars={remainingChars} />
       <RemainingWords actualWords={actualWords} expectedWords={expectedWords} />
     </div>
   );
 }
 
-export function RemainingChars({
-  remainingChars,
-  ...props
-}: RemainingCharsProps) {
+export function RemainingChars({ remainingChars, ...props }: RemainingCharsProps) {
   return <span {...props}>{remainingChars.join("")}</span>;
 }
 
-export function RemainingWords({
-  actualWords,
-  expectedWords,
-}: TypingTestWords) {
-  const remainingWords = _.slice(
-    expectedWords,
-    actualWords.length,
-    expectedWords.length
-  ).join(" ");
+export function RemainingWords({ actualWords, expectedWords }: TypingTestWords) {
+  const remainingWords = _.slice(expectedWords, actualWords.length, expectedWords.length).join(" ");
 
   return <span>{remainingWords}</span>;
 }

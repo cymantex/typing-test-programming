@@ -6,7 +6,7 @@ import {
   getExpectedWords,
   Language,
   setSelectedLanguage,
-} from "../utils/language/utils";
+} from "@/utils/language/utils";
 
 export interface TypingTestStore {
   inputValue: string;
@@ -14,9 +14,7 @@ export interface TypingTestStore {
   selectedLanguage: Language;
   expectedWords: string[];
   resetInputValue: () => void;
-  onBackspaceRemoveLastCharForCurrentWord: (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ) => void;
+  onBackspaceRemoveLastCharForCurrentWord: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   onChangeAppendChar: (event: ChangeEvent<HTMLInputElement>) => void;
   onLanguageSelect: (language: Language) => void;
   handleTimerExpire: () => void;
@@ -33,9 +31,7 @@ export const useTypingTestStore = create<TypingTestStore>((set) => ({
       ...state,
       inputValue: "",
     })),
-  onBackspaceRemoveLastCharForCurrentWord: (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ) =>
+  onBackspaceRemoveLastCharForCurrentWord: (event: React.KeyboardEvent<HTMLInputElement>) =>
     set((state) => {
       const value = state.inputValue;
 
@@ -99,11 +95,6 @@ export const useTypingTestStore = create<TypingTestStore>((set) => ({
     })),
 }));
 
-function userIsTryingToEnterAnEmptyWord(
-  charToAppend: string,
-  lastValidChar: string
-) {
-  return (
-    charToAppend === " " && (lastValidChar === "" || lastValidChar === " ")
-  );
+function userIsTryingToEnterAnEmptyWord(charToAppend: string, lastValidChar: string) {
+  return charToAppend === " " && (lastValidChar === "" || lastValidChar === " ");
 }

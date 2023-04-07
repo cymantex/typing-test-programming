@@ -9,12 +9,9 @@ interface TypingTestResultProps {
   selectedLanguage: Language;
 }
 
-export function TypingTestResultCharts({
-  selectedLanguage,
-}: TypingTestResultProps) {
+export function TypingTestResultCharts({ selectedLanguage }: TypingTestResultProps) {
   const results = getAllTestResults(selectedLanguage);
-  const typingTestRechartDataList: TypingTestRechartData[] =
-    toRechartDataList(results);
+  const typingTestRechartDataList: TypingTestRechartData[] = toRechartDataList(results);
 
   return <TypingTestResultChart data={typingTestRechartDataList} />;
 }

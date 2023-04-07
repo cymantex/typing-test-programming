@@ -8,11 +8,7 @@ interface ThemeButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme: Theme;
 }
 
-export function ThemeButton({
-  toggleTheme,
-  theme,
-  ...props
-}: ThemeButtonProps) {
+export function ThemeButton({ toggleTheme, theme, ...props }: ThemeButtonProps) {
   return (
     <button onClick={() => toggleTheme()} {...props}>
       {theme === Theme.Dark ? <BsSun /> : <BsMoon />}

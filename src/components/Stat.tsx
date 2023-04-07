@@ -1,12 +1,6 @@
 import React from "react";
 
-export function Stat({
-  title,
-  value,
-}: {
-  title: string;
-  value: number | string;
-}) {
+export function Stat({ title, value }: { title: string; value: number | string }) {
   return (
     <div className="stat p-1">
       <div className="stat-title text-xs sm:text-base">{title}</div>

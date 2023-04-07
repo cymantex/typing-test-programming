@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import { CompletedWordsAndCharsProps } from "./types";
-import { actualWordsLengthWithoutCurrentWord } from "../../../utils/utils";
+import { actualWordsLengthWithoutCurrentWord } from "@/utils/utils";
 
 export function PreviousWordsAndChars({
   actualWords,
@@ -20,8 +20,7 @@ export function PreviousWordsAndChars({
     <div {...props}>
       {previouslyCompletedWords.map((previouslyCompletedWord, i) => {
         const className =
-          i < expectedWords.length &&
-          expectedWords[i] === previouslyCompletedWord
+          i < expectedWords.length && expectedWords[i] === previouslyCompletedWord
             ? "text-success"
             : "text-error";
         return (

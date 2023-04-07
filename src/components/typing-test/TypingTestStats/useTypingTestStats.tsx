@@ -20,8 +20,7 @@ export function useTypingTestStats({
   onTimerExpire,
   testDurationSeconds,
 }: UseTypingTestStatsProps): TypingTestStatsEvent {
-  const dateSecondsInFuture =
-    appendSecondsToCurrentDateTime(testDurationSeconds);
+  const dateSecondsInFuture = appendSecondsToCurrentDateTime(testDurationSeconds);
 
   const { start, restart, seconds } = useTimer({
     autoStart: false,
@@ -69,8 +68,6 @@ function calcAccuracy(actualWords: string[], correctWords: string[]): string {
 
 function appendSecondsToCurrentDateTime(testDurationSeconds: number) {
   const dateSecondsInFuture = new Date();
-  dateSecondsInFuture.setSeconds(
-    dateSecondsInFuture.getSeconds() + testDurationSeconds
-  );
+  dateSecondsInFuture.setSeconds(dateSecondsInFuture.getSeconds() + testDurationSeconds);
   return dateSecondsInFuture;
 }

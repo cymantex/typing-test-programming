@@ -14,38 +14,27 @@ export type TypingTestResultMappings = {
   [date: string]: TypingTestResult;
 };
 
-export function useSaveTestResults(
-  saveResults: boolean,
-  typingTestResult: TypingTestResult
-) {
+export function useSaveTestResults(saveResults: boolean, typingTestResult: TypingTestResult) {
   useEffect(() => {
     if (saveResults) {
       const result: TypingTestResultMappings = {
         [Date.now()]: typingTestResult,
       };
-      upsertObject<TypingTestResultMappings>(
-        "results",
-        result,
-        (previousResults) => ({
-          ...previousResults,
-          ...result,
-        })
-      );
+      upsertObject<TypingTestResultMappings>("results", result, (previousResults) => ({
+        ...previousResults,
+        ...result,
+      }));
     }
   }, [saveResults]);
 }
 
-export function getAllTestResults(
-  language: Language
-): TypingTestResultMappings {
+export function getAllTestResults(language: Language): TypingTestResultMappings {
   const typingTestResult = getObject<TypingTestResultMappings>("results");
 
   if (typingTestResult === null) return {};
 
   return Object.entries(typingTestResult)
-    .filter(
-      ([, typingTestResult]) => typingTestResult.selectedLanguage === language
-    )
+    .filter(([, typingTestResult]) => typingTestResult.selectedLanguage === language)
     .reduce(
       (typingTestResults, [date, typingTestResult]) => ({
         ...typingTestResults,
