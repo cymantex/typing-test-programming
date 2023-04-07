@@ -1,22 +1,30 @@
-import React from "react";
-import { useFocus } from "../hooks/useFocus";
+import React, { ReactNode } from "react";
+import { useFocus } from "@/hooks/useFocus";
 import classNames from "classnames";
-import { KeyboardEventHandler, ReactElement } from "react";
+import { KeyboardEventHandler } from "react";
 
 export interface ModalProps {
   isOpen: boolean;
   title: string;
-  onKeyDown?: KeyboardEventHandler<HTMLButtonElement>;
   onClose: () => void;
-  children: ReactElement;
+  onKeyDown?: KeyboardEventHandler<HTMLButtonElement>;
+  children?: ReactNode;
+  modalBoxClassName?: string;
 }
 
-export function Modal({ isOpen, title, onClose, children, onKeyDown }: ModalProps) {
+export function Modal({
+  isOpen,
+  title,
+  onClose,
+  children,
+  onKeyDown,
+  modalBoxClassName,
+}: ModalProps) {
   const buttonRef = useFocus<HTMLButtonElement>(isOpen);
 
   return (
     <div className={classNames("modal", { "modal-open": isOpen })}>
-      <div className="modal-box">
+      <div className={classNames("modal-box", modalBoxClassName)}>
         <h3 className="font-bold text-lg">{title}</h3>
         <div className="divider" />
         {children}

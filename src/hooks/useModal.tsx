@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useTypingTestResultModal() {
+export function useModal() {
   const [isOpen, setOpen] = useState(false);
 
   const open = () => {

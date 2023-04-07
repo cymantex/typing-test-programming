@@ -5,7 +5,7 @@ import { repeat } from "@/utils/utils";
 export function stream({
   veryRareMultiplier,
   extremelyCommonMultiplier,
-  rarerMultiplier,
+  rareMultiplier,
   enabledPackages,
 }: LanguageSettings) {
   if (!enabledPackages.has("java.util.stream")) return [];
@@ -14,9 +14,9 @@ export function stream({
     ...repeat("BaseStream", veryRareMultiplier),
     ...repeat("Collector", veryRareMultiplier),
     ...repeat("Collectors", extremelyCommonMultiplier),
-    ...repeat("DoubleStream", rarerMultiplier),
-    ...repeat("IntStream", rarerMultiplier),
-    ...repeat("LongStream", rarerMultiplier),
+    ...repeat("DoubleStream", rareMultiplier),
+    ...repeat("IntStream", rareMultiplier),
+    ...repeat("LongStream", rareMultiplier),
     ...repeat("MatchOps", veryRareMultiplier),
     ...repeat("Node", veryRareMultiplier),
     ...repeat("Stream", extremelyCommonMultiplier),

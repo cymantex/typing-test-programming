@@ -4,6 +4,7 @@ import { SiJava, SiTypescript } from "react-icons/all";
 import { typescript } from "./typescript";
 import { ReactElement } from "react";
 import { getObject, setObject } from "local-storage-superjson";
+import { getSettings, LanguageSettings } from "@/utils/language/settings";
 
 export enum Language {
   Java = "Java",
@@ -13,7 +14,7 @@ export enum Language {
 interface LanguageMapping {
   [language: string]: {
     Icon: () => ReactElement;
-    getExpectedWords: () => string[];
+    getExpectedWords: (settings: LanguageSettings) => string[];
   };
 }
 
@@ -54,5 +55,5 @@ export async function setSelectedLanguage(language: Language): Promise<void> {
 }
 
 export function getExpectedWords(language: string): string[] {
-  return languageMap[toLanguage(language)].getExpectedWords();
+  return languageMap[toLanguage(language)].getExpectedWords(getSettings());
 }

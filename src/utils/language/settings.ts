@@ -1,3 +1,5 @@
+import { getObject, upsertObject } from "local-storage-superjson";
+
 export interface LanguageSettings {
   insanelyCommonMultiplier: number;
   extremelyCommonMultiplier: number;
@@ -25,3 +27,19 @@ export const defaultSettings: LanguageSettings = {
     "java.util.stream",
   ]),
 };
+
+export function upsertSettings(settings: Partial<LanguageSettings>) {
+  upsertObject<LanguageSettings>("settings", defaultSettings, (previousSettings) => ({
+    ...previousSettings,
+    ...settings,
+  }));
+}
+
+export function getSettings(): LanguageSettings {
+  const settings = getObject<LanguageSettings>("settings");
+  console.log(settings);
+
+  if (settings === null) return defaultSettings;
+
+  return settings;
+}

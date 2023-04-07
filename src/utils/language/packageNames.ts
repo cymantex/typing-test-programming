@@ -42,4 +42,4 @@ export const packageNames = [
   "java.util.spi",
   "java.util.stream",
   "java.util.zip",
-];
+].sort();

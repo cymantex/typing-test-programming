@@ -8,7 +8,10 @@ import { useTypingTestStore } from "./hooks/useTypingTestStore";
 import { TypingTestLanguageButtons } from "./components/typing-test/TypingTestLanguageButtons";
 import { Menu } from "./components/Menu/Menu";
 import { TypingTestResultChartModal } from "./components/typing-test/TypingTestResultChartModal/TypingTestResultChartModal";
-import { useTypingTestResultModal } from "./components/typing-test/TypingTestResultChartModal/useTypingTestResultModal";
+import { useModal } from "@/hooks/useModal";
+import { JavaSettingsModal } from "@/components/JavaSettingsModal/JavaSettingsModal";
+import { Language } from "@/utils/language/utils";
+import { useSettings } from "@/hooks/useSettings";
 
 export function App() {
   const {
@@ -23,6 +26,8 @@ export function App() {
     onBackspaceRemoveLastCharForCurrentWord,
   } = useTypingTestStore();
 
+  const { settings, handleTogglePackageName } = useSettings();
+
   const actualWords = inputValue.split(" ");
 
   const { startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds } = useTypingTestStats({
@@ -32,7 +37,8 @@ export function App() {
     onTimerExpire: handleTimerExpire,
   });
 
-  const typingTestResultModal = useTypingTestResultModal();
+  const typingTestResultModal = useModal();
+  const javaSettingsModal = useModal();
 
   return (
     <div>
@@ -73,7 +79,14 @@ export function App() {
         disabled={inputValue !== ""}
         className="mt-5 flex justify-center"
       />
-      <Menu onChartButtonClick={typingTestResultModal.open} />
+      <Menu
+        onChartClick={typingTestResultModal.open}
+        onSettingsClick={() => {
+          if (selectedLanguage === Language.Java) {
+            javaSettingsModal.open();
+          }
+        }}
+      />
       <TypingTestResultChartModal
         isOpen={typingTestResultModal.isOpen}
         selectedLanguage={selectedLanguage}
@@ -89,6 +102,15 @@ export function App() {
           resetTimer();
           handleResultModalClose();
         }}
+      />
+      <JavaSettingsModal
+        enabledPackages={settings.enabledPackages}
+        onTogglePackageName={(packageName) => {
+          handleTogglePackageName(packageName);
+          onLanguageSelect(selectedLanguage);
+        }}
+        isOpen={javaSettingsModal.isOpen}
+        onClose={javaSettingsModal.close}
       />
     </div>
   );
