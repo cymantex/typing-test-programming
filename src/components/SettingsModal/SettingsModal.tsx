@@ -3,7 +3,7 @@ import { Modal } from "@/components/Modal";
 import { Language } from "@/types";
 import { JavaSettings } from "@/components/SettingsModal/JavaSettings";
 
-interface SettingsModal {
+interface SettingsModalProps {
   selectedLanguage: Language;
   seconds: number;
   onSecondsChange: (seconds: number) => void;
@@ -21,7 +21,7 @@ export const SettingsModal = ({
   onTogglePackageName,
   isOpen,
   onClose,
-}: SettingsModal) => {
+}: SettingsModalProps) => {
   return (
     <Modal
       key={Modal.key(isOpen)}

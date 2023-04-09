@@ -2,7 +2,12 @@
 import { Settings } from "@/types";
 import { repeat } from "@/utils/utils";
 
-export function stream({ veryRareMultiplier, extremelyCommonMultiplier, rareMultiplier, enabledPackages }: Settings) {
+export function stream({
+  veryRareMultiplier,
+  extremelyCommonMultiplier,
+  rareMultiplier,
+  enabledPackages,
+}: Settings) {
   if (!enabledPackages || !enabledPackages.has("java.util.stream")) return [];
 
   return [

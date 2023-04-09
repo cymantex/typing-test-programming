@@ -2,7 +2,12 @@
 import { Settings } from "@/types";
 import { repeat } from "@/utils/utils";
 
-export function io({ veryRareMultiplier, rareMultiplier, commonMultiplier, enabledPackages }: Settings) {
+export function io({
+  veryRareMultiplier,
+  rareMultiplier,
+  commonMultiplier,
+  enabledPackages,
+}: Settings) {
   if (!enabledPackages || !enabledPackages.has("java.io")) return [];
 
   return [

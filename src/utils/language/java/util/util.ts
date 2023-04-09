@@ -2,7 +2,14 @@
 import { Settings } from "@/types";
 import { repeat } from "@/utils/utils";
 
-export function util({ veryRareMultiplier, rareMultiplier, extremelyCommonMultiplier, veryCommonMultiplier, commonMultiplier, enabledPackages }: Settings) {
+export function util({
+  veryRareMultiplier,
+  rareMultiplier,
+  extremelyCommonMultiplier,
+  veryCommonMultiplier,
+  commonMultiplier,
+  enabledPackages,
+}: Settings) {
   if (!enabledPackages || !enabledPackages.has("java.util")) return [];
 
   return [

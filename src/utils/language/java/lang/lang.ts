@@ -2,7 +2,13 @@
 import { Settings } from "@/types";
 import { repeat } from "@/utils/utils";
 
-export function lang({ veryRareMultiplier, extremelyCommonMultiplier, rareMultiplier, commonMultiplier, enabledPackages }: Settings) {
+export function lang({
+  veryRareMultiplier,
+  extremelyCommonMultiplier,
+  rareMultiplier,
+  commonMultiplier,
+  enabledPackages,
+}: Settings) {
   if (!enabledPackages || !enabledPackages.has("java.lang")) return [];
 
   return [

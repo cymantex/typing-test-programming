@@ -2,7 +2,12 @@
 import { Settings } from "@/types";
 import { repeat } from "@/utils/utils";
 
-export function functions({ rareMultiplier, veryRareMultiplier, extremelyCommonMultiplier, enabledPackages }: Settings) {
+export function functions({
+  rareMultiplier,
+  veryRareMultiplier,
+  extremelyCommonMultiplier,
+  enabledPackages,
+}: Settings) {
   if (!enabledPackages || !enabledPackages.has("java.util.function")) return [];
 
   return [
