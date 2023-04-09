@@ -21,6 +21,10 @@ export interface Settings {
   rareMultiplier: number;
   veryRareMultiplier: number;
   vocabularyMultiplier: number;
-  enabledPackages: Set<string>;
   testDurationSeconds: number;
+  enabledPackages?: Set<string>;
 }
+
+export type LanguageSettings = {
+  [language in Language]: Settings;
+};

@@ -1,5 +1,4 @@
 import { repeat, repeatArray } from "../utils";
-import { defaultSettings } from "./settings";
 import { Settings } from "@/types";
 
 export const typescript = ({
@@ -9,7 +8,7 @@ export const typescript = ({
   rareMultiplier,
   veryRareMultiplier,
   vocabularyMultiplier,
-}: Settings = defaultSettings) =>
+}: Settings) =>
   repeatArray(
     [
       // region Keywords

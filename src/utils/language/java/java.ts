@@ -1,5 +1,4 @@
 import { repeatArray } from "../../utils";
-import { defaultSettings } from "../settings";
 import { keywords } from "./keywords";
 import { io } from "./io";
 import { lang } from "./lang/lang";
@@ -45,7 +44,7 @@ import { stream } from "./util/stream";
 import { zip } from "./util/zip";
 import { Settings } from "@/types";
 
-export const java = (settings: Settings = defaultSettings) =>
+export const java = (settings: Settings) =>
   repeatArray(
     [
       ...keywords(settings),

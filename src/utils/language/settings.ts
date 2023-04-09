@@ -1,7 +1,10 @@
 import { getObject, upsertObject } from "local-storage-superjson";
-import { Settings } from "@/types";
+import { Language, LanguageSettings, Settings } from "@/types";
+import { omit } from "lodash";
 
-export const defaultSettings: Settings = {
+const LANGUAGE_SETTINGS_KEY = "language-settings";
+
+const defaultSettings: Settings = {
   insanelyCommonMultiplier: 10,
   extremelyCommonMultiplier: 7,
   veryCommonMultiplier: 5,
@@ -19,18 +22,38 @@ export const defaultSettings: Settings = {
   testDurationSeconds: 60,
 };
 
-export function upsertSettings(settings: Partial<Settings>) {
-  upsertObject<Settings>("settings", { ...defaultSettings, ...settings }, (previousSettings) => ({
-    ...previousSettings,
-    ...settings,
-  }));
+const defaultLanguageSettings: LanguageSettings = {
+  Java: defaultSettings,
+  Typescript: omit(defaultSettings, "enabledPackages"),
+};
+
+export function upsertSettings(language: Language, settings: Partial<Settings>) {
+  upsertObject<LanguageSettings>(
+    LANGUAGE_SETTINGS_KEY,
+    {
+      ...defaultLanguageSettings,
+      [language]: {
+        ...defaultLanguageSettings[language],
+        ...settings,
+      },
+    },
+    (previousSettings) => ({
+      ...previousSettings,
+      [language]: {
+        ...previousSettings[language],
+        ...settings,
+      },
+    })
+  );
 }
 
-export function getSettings(): Settings {
-  const settings = getObject<Settings>("settings") || {};
+export function getSettings(language: Language): Settings {
+  const settings = getObject<LanguageSettings>(LANGUAGE_SETTINGS_KEY);
+
+  if (settings === null || !settings[language]) return defaultSettings;
 
   return {
-    ...defaultSettings,
-    ...settings,
+    ...defaultLanguageSettings[language],
+    ...settings[language],
   };
 }

@@ -1,7 +1,8 @@
 import { getSettings, upsertSettings } from "@/utils/language/settings";
+import { Language } from "@/types";
 
-export const useSettings = () => {
-  const settings = getSettings();
+export const useSettings = (selectedLanguage: Language) => {
+  const settings = getSettings(selectedLanguage);
 
   return {
     settings,
@@ -14,7 +15,7 @@ export const useSettings = () => {
         enabledPackages.add(packageName);
       }
 
-      upsertSettings({ enabledPackages });
+      upsertSettings(selectedLanguage, { enabledPackages });
     },
   };
 };

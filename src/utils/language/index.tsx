@@ -46,5 +46,5 @@ export async function setSelectedLanguage(language: Language): Promise<void> {
 }
 
 export function getExpectedWords(language: Language): string[] {
-  return languageMap[language].getExpectedWords(getSettings());
+  return languageMap[language].getExpectedWords(getSettings(language));
 }

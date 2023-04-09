@@ -26,7 +26,7 @@ export function App() {
     onBackspaceRemoveLastCharForCurrentWord,
   } = useTypingTestStore();
 
-  const { settings, handleTogglePackageName } = useSettings();
+  const { settings, handleTogglePackageName } = useSettings(selectedLanguage);
 
   const actualWords = inputValue.split(" ");
 
@@ -106,8 +106,7 @@ export function App() {
       <JavaSettingsModal
         seconds={settings.testDurationSeconds}
         onSecondsChange={(seconds) => {
-          upsertSettings({ testDurationSeconds: seconds });
-          console.log({ seconds });
+          upsertSettings(selectedLanguage, { testDurationSeconds: seconds });
           resetTimer(seconds);
         }}
         enabledPackages={settings.enabledPackages}
