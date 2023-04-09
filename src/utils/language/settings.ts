@@ -9,6 +9,7 @@ export interface LanguageSettings {
   veryRareMultiplier: number;
   vocabularyMultiplier: number;
   enabledPackages: Set<string>;
+  testDurationSeconds: number;
 }
 
 export const defaultSettings: LanguageSettings = {
@@ -26,20 +27,25 @@ export const defaultSettings: LanguageSettings = {
     "java.util.function",
     "java.util.stream",
   ]),
+  testDurationSeconds: 60,
 };
 
 export function upsertSettings(settings: Partial<LanguageSettings>) {
-  upsertObject<LanguageSettings>("settings", defaultSettings, (previousSettings) => ({
-    ...previousSettings,
-    ...settings,
-  }));
+  upsertObject<LanguageSettings>(
+    "settings",
+    { ...defaultSettings, ...settings },
+    (previousSettings) => ({
+      ...previousSettings,
+      ...settings,
+    })
+  );
 }
 
 export function getSettings(): LanguageSettings {
-  const settings = getObject<LanguageSettings>("settings");
-  console.log(settings);
+  const settings = getObject<LanguageSettings>("settings") || {};
 
-  if (settings === null) return defaultSettings;
-
-  return settings;
+  return {
+    ...defaultSettings,
+    ...settings,
+  };
 }

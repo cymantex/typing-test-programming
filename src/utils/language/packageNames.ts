@@ -1,4 +1,3 @@
-// TODO: Make it possible to enable/disable these packages
 export const packageNames = [
   "java.io",
   "java.lang",

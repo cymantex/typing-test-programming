@@ -15,7 +15,12 @@ export function TypingTestResultChartModal({
   selectedLanguage,
 }: TypingTestResultChartModalProps) {
   return (
-    <Modal title={"Previous results: " + selectedLanguage} isOpen={isOpen} onClose={onClose}>
+    <Modal
+      key={Modal.key(isOpen)}
+      title={"Previous results: " + selectedLanguage}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <TypingTestResultCharts selectedLanguage={selectedLanguage} />
     </Modal>
   );

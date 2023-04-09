@@ -12,6 +12,7 @@ import { useModal } from "@/hooks/useModal";
 import { JavaSettingsModal } from "@/components/JavaSettingsModal/JavaSettingsModal";
 import { Language } from "@/utils/language/utils";
 import { useSettings } from "@/hooks/useSettings";
+import { upsertSettings } from "@/utils/language/settings";
 
 export function App() {
   const {
@@ -33,7 +34,7 @@ export function App() {
   const { startTimer, resetTimer, cpm, wpm, accuracy, remainingSeconds } = useTypingTestStats({
     actualWords,
     expectedWords,
-    testDurationSeconds: 60,
+    testDurationSeconds: settings.testDurationSeconds,
     onTimerExpire: handleTimerExpire,
   });
 
@@ -96,7 +97,7 @@ export function App() {
         cpm={cpm}
         wpm={wpm}
         accuracy={accuracy}
-        modalOpen={resultModalOpen}
+        isOpen={resultModalOpen}
         selectedLanguage={selectedLanguage}
         onClose={() => {
           resetTimer();
@@ -104,6 +105,12 @@ export function App() {
         }}
       />
       <JavaSettingsModal
+        seconds={settings.testDurationSeconds}
+        onSecondsChange={(seconds) => {
+          upsertSettings({ testDurationSeconds: seconds });
+          console.log({ seconds });
+          resetTimer(seconds);
+        }}
         enabledPackages={settings.enabledPackages}
         onTogglePackageName={(packageName) => {
           handleTogglePackageName(packageName);

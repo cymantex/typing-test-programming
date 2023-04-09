@@ -9,7 +9,7 @@ export interface TypingTestResultModalProps {
   wpm?: number;
   accuracy?: string;
   selectedLanguage: Language;
-  modalOpen: boolean;
+  isOpen: boolean;
   onClose: () => void;
 }
 
@@ -18,14 +18,15 @@ export function TypingTestResultModal({
   cpm = 0,
   accuracy = "0%",
   selectedLanguage,
-  modalOpen,
+  isOpen,
   onClose,
 }: TypingTestResultModalProps) {
-  useSaveTestResults(modalOpen, { wpm, cpm, accuracy, selectedLanguage });
+  useSaveTestResults(isOpen, { wpm, cpm, accuracy, selectedLanguage });
 
   return (
     <Modal
-      isOpen={modalOpen}
+      key={Modal.key(isOpen)}
+      isOpen={isOpen}
       title={selectedLanguage}
       onKeyDown={(event) => {
         // Preventing the modal from being closed on space bar as the user will

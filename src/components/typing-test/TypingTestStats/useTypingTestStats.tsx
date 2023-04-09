@@ -6,7 +6,7 @@ import { actualWordsLengthWithoutCurrentWord } from "../../../utils/utils";
 
 interface TypingTestStatsEvent extends TypingTestStatsProps {
   startTimer: () => void;
-  resetTimer: () => void;
+  resetTimer: (seconds?: number) => void;
 }
 
 interface UseTypingTestStatsProps extends TypingTestWords {
@@ -22,10 +22,17 @@ export function useTypingTestStats({
 }: UseTypingTestStatsProps): TypingTestStatsEvent {
   const dateSecondsInFuture = appendSecondsToCurrentDateTime(testDurationSeconds);
 
-  const { start, restart, seconds } = useTimer({
+  const { start, restart, seconds, minutes } = useTimer({
     autoStart: false,
     expiryTimestamp: dateSecondsInFuture,
     onExpire: onTimerExpire,
+  });
+
+  console.log({
+    testDurationSeconds,
+    seconds,
+    minutes,
+    calcedSeconds: toSeconds(seconds, minutes),
   });
 
   const correctWords = _(expectedWords)
@@ -39,14 +46,18 @@ export function useTypingTestStats({
     wpm: calcCountPerMinute(correctWords.length, testDurationSeconds),
     cpm: calcCountPerMinute(correctWords.join("").length, testDurationSeconds),
     accuracy: calcAccuracy(actualWords, correctWords),
-    resetTimer: () => {
-      restart(appendSecondsToCurrentDateTime(testDurationSeconds), false);
+    resetTimer: (seconds = testDurationSeconds) => {
+      restart(appendSecondsToCurrentDateTime(seconds), false);
     },
     startTimer: start,
     // This is a bit of an ugly hack to display the amount of seconds available for the test.
     // useTimer defaults seconds to 0 before the start function is called.
-    remainingSeconds: seconds === 0 ? testDurationSeconds : seconds,
+    remainingSeconds: seconds === 0 ? testDurationSeconds : toSeconds(seconds, minutes),
   };
+}
+
+function toSeconds(seconds: number, minutes: number) {
+  return seconds + minutes * 60;
 }
 
 function calcCountPerMinute(count: number, testDurationSeconds: number) {

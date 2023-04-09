@@ -43,3 +43,5 @@ export function Modal({
     </div>
   );
 }
+
+Modal.key = (isOpen: boolean) => (isOpen ? "true" : "false");
