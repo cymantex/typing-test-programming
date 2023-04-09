@@ -2,13 +2,14 @@ import React from "react";
 import { Stat } from "../../Stat";
 import { useSaveTestResults } from "./useSaveTestResults";
 import { Modal } from "../../Modal";
-import { Language } from "@/types";
+import { Language, Settings } from "@/types";
 
 export interface TypingTestResultModalProps {
   cpm?: number;
   wpm?: number;
   accuracy?: string;
   selectedLanguage: Language;
+  settings: Settings;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -20,8 +21,9 @@ export function TypingTestResultModal({
   selectedLanguage,
   isOpen,
   onClose,
+  settings,
 }: TypingTestResultModalProps) {
-  useSaveTestResults(isOpen, { wpm, cpm, accuracy, selectedLanguage });
+  useSaveTestResults(isOpen, { wpm, cpm, accuracy, selectedLanguage, settings });
 
   return (
     <Modal

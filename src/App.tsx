@@ -91,6 +91,7 @@ export function App() {
         accuracy={accuracy}
         isOpen={resultModalOpen}
         selectedLanguage={selectedLanguage}
+        settings={settings}
         onClose={() => {
           resetTimer();
           handleResultModalClose();

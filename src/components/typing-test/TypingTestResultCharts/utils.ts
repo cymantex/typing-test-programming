@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { TypingTestRechartData } from "./types";
-import { TypingTestResultMappings } from "@/types";
+import { Settings, TypingTestResultMappings } from "@/types";
 
 export function accuracyToInteger(accuracy: string) {
   return parseInt(accuracy.replace("%", ""));
@@ -23,4 +23,13 @@ export function toRechartDataList(
     date: parseInt(date),
     accuracy: accuracyToInteger(typingTestResult.accuracy),
   }));
+}
+
+export function toSettingsMap(typingTestResults: TypingTestResultMappings): Map<number, Settings> {
+  return new Map(
+    Object.entries(typingTestResults).map(([date, typingTestResult]) => [
+      parseInt(date, 10),
+      typingTestResult.settings,
+    ])
+  );
 }

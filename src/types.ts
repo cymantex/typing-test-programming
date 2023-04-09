@@ -6,7 +6,7 @@ export type TypingTestResult = {
   cpm: number;
   accuracy: string;
   selectedLanguage: Language;
-  // TODO: Add test duration
+  settings: Settings;
 };
 
 export type TypingTestResultMappings = {

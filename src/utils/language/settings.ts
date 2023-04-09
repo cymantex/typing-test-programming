@@ -22,7 +22,7 @@ const defaultSettings: Settings = {
   testDurationSeconds: 60,
 };
 
-const defaultLanguageSettings: LanguageSettings = {
+export const defaultLanguageSettings: LanguageSettings = {
   Java: defaultSettings,
   Typescript: omit(defaultSettings, "enabledPackages"),
 };

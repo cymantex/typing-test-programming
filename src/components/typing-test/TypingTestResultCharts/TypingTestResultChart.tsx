@@ -6,17 +6,20 @@ import {
   LineChart,
   ResponsiveContainer,
   Tooltip,
+  TooltipProps,
   XAxis,
   YAxis,
 } from "recharts";
 import { TypingTestRechartData } from "./types";
-import { toDateTime } from "./utils";
+import { Settings } from "@/types";
+import { TypingTestResultChartTooltip } from "@/components/typing-test/TypingTestResultCharts/TypingTestResultChartTooltip";
 
 interface TypingTestResultChartProps {
   data: TypingTestRechartData[];
+  settingsMap: Map<number, Settings>;
 }
 
-export function TypingTestResultChart({ data }: TypingTestResultChartProps) {
+export function TypingTestResultChart({ data, settingsMap }: TypingTestResultChartProps) {
   if (data.length === 0) return null;
 
   return (
@@ -26,10 +29,9 @@ export function TypingTestResultChart({ data }: TypingTestResultChartProps) {
         <XAxis dataKey="date" hide />
         <YAxis />
         <Tooltip
-          labelFormatter={toDateTime}
-          contentStyle={{
-            backgroundColor: "hsl(var(--b1))",
-          }}
+          content={(props: TooltipProps<number, string>) => (
+            <TypingTestResultChartTooltip settingsMap={settingsMap} {...props} />
+          )}
         />
         <Legend />
         <Line type="monotone" dataKey="cpm" stroke="#8884d8" dot={false} />
