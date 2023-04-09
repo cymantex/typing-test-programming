@@ -1,18 +1,6 @@
 import { useEffect } from "react";
-import { getObject, upsertObject } from "local-storage-superjson";
-import { Language } from "@/utils/language";
-
-export type TypingTestResult = {
-  wpm: number;
-  cpm: number;
-  accuracy: string;
-  selectedLanguage: Language;
-  // TODO: Add test duration
-};
-
-export type TypingTestResultMappings = {
-  [date: string]: TypingTestResult;
-};
+import { upsertObject } from "local-storage-superjson";
+import { TypingTestResult, TypingTestResultMappings } from "@/types";
 
 export function useSaveTestResults(saveResults: boolean, typingTestResult: TypingTestResult) {
   useEffect(() => {
@@ -26,20 +14,4 @@ export function useSaveTestResults(saveResults: boolean, typingTestResult: Typin
       }));
     }
   }, [saveResults]);
-}
-
-export function getAllTestResults(language: Language): TypingTestResultMappings {
-  const typingTestResult = getObject<TypingTestResultMappings>("results");
-
-  if (typingTestResult === null) return {};
-
-  return Object.entries(typingTestResult)
-    .filter(([, typingTestResult]) => typingTestResult.selectedLanguage === language)
-    .reduce(
-      (typingTestResults, [date, typingTestResult]) => ({
-        ...typingTestResults,
-        [date]: typingTestResult,
-      }),
-      {}
-    );
 }

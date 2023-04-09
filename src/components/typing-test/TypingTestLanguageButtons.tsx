@@ -1,8 +1,8 @@
 import React, { HTMLAttributes } from "react";
 import { Button } from "../Button";
-import { Language, Languages } from "@/utils/language";
 import classNames from "classnames";
 import { LanguageIcon } from "../LanguageIcon";
+import { Language, Languages } from "@/types";
 
 interface TypingTestLanguagePickerProps extends HTMLAttributes<HTMLElement> {
   selectedLanguage: Language;

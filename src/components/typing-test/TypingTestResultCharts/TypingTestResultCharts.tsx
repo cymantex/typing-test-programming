@@ -1,9 +1,9 @@
 import React from "react";
-import { getAllTestResults } from "../TypingTestResultModal/useSaveTestResults";
-import { Language } from "@/utils/language";
 import { TypingTestResultChart } from "./TypingTestResultChart";
 import { TypingTestRechartData } from "./types";
 import { toRechartDataList } from "./utils";
+import { getAllTestResults } from "@/components/typing-test/TypingTestResultModal/getAllTestResults";
+import { Language } from "@/types";
 
 interface TypingTestResultProps {
   selectedLanguage: Language;

@@ -1,6 +1,6 @@
-import { TypingTestResultMappings } from "../TypingTestResultModal/useSaveTestResults";
 import _ from "lodash";
 import { TypingTestRechartData } from "./types";
+import { TypingTestResultMappings } from "@/types";
 
 export function accuracyToInteger(accuracy: string) {
   return parseInt(accuracy.replace("%", ""));

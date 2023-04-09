@@ -1,5 +1,5 @@
-import { Settings } from "../settings";
 import { repeat } from "../../utils";
+import { Settings } from "@/types";
 
 export function keywords({
   commonMultiplier,

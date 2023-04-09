@@ -1,5 +1,6 @@
 import { repeat, repeatArray } from "../utils";
-import { defaultSettings, Settings } from "./settings";
+import { defaultSettings } from "./settings";
+import { Settings } from "@/types";
 
 export const typescript = ({
   extremelyCommonMultiplier,

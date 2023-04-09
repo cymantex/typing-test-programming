@@ -1,6 +1,6 @@
 // Auto-generated file. Do not edit.
-import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
+import { Settings } from "@/types";
 
 export function time({ veryRareMultiplier, commonMultiplier, enabledPackages }: Settings) {
   if (!enabledPackages.has("java.time")) return [];

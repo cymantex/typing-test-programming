@@ -1,8 +1,8 @@
 import React from "react";
 import { Stat } from "../../Stat";
 import { useSaveTestResults } from "./useSaveTestResults";
-import { Language } from "@/utils/language";
 import { Modal } from "../../Modal";
+import { Language } from "@/types";
 
 export interface TypingTestResultModalProps {
   cpm?: number;

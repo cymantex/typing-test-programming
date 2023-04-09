@@ -1,12 +1,8 @@
 import create from "zustand";
 import React, { ChangeEvent } from "react";
 import _ from "lodash";
-import {
-  getDefaultLanguage,
-  getExpectedWords,
-  Language,
-  setSelectedLanguage,
-} from "@/utils/language";
+import { getDefaultLanguage, getExpectedWords, setSelectedLanguage } from "@/utils/language";
+import { Language } from "@/types";
 
 export interface TypingTestStore {
   inputValue: string;

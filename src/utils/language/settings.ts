@@ -1,16 +1,5 @@
 import { getObject, upsertObject } from "local-storage-superjson";
-
-export interface Settings {
-  insanelyCommonMultiplier: number;
-  extremelyCommonMultiplier: number;
-  veryCommonMultiplier: number;
-  commonMultiplier: number;
-  rareMultiplier: number;
-  veryRareMultiplier: number;
-  vocabularyMultiplier: number;
-  enabledPackages: Set<string>;
-  testDurationSeconds: number;
-}
+import { Settings } from "@/types";
 
 export const defaultSettings: Settings = {
   insanelyCommonMultiplier: 10,

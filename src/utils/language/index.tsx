@@ -1,13 +1,10 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { java } from "./java/java";
 import { SiJava, SiTypescript } from "react-icons/all";
 import { typescript } from "./typescript";
-import { ReactElement } from "react";
 import { getObject, setObject } from "local-storage-superjson";
-import { getSettings, Settings } from "@/utils/language/settings";
-
-export const Languages = ["Java", "Typescript"] as const;
-export type Language = (typeof Languages)[number];
+import { getSettings } from "@/utils/language/settings";
+import { Language, Settings } from "@/types";
 
 interface LanguageMapping {
   [language: string]: {
