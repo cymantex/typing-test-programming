@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function net({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.net")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.net")) return [];
 
   return [
     ...repeat("Authenticator", veryRareMultiplier),

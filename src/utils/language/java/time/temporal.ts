@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function temporal({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.time.temporal")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.time.temporal")) return [];
 
   return [
     ...repeat("ChronoField", veryRareMultiplier),

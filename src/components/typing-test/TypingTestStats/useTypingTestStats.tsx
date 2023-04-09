@@ -28,13 +28,6 @@ export function useTypingTestStats({
     onExpire: onTimerExpire,
   });
 
-  console.log({
-    testDurationSeconds,
-    seconds,
-    minutes,
-    calcedSeconds: toSeconds(seconds, minutes),
-  });
-
   const correctWords = _(expectedWords)
     // Using the full actualWords.length instead would mean the CPM/WPM updates immediately when
     // the user reaches the end of the current word rather than when submitting it.

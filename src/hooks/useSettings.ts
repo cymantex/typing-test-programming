@@ -7,6 +7,8 @@ export const useSettings = (selectedLanguage: Language) => {
   return {
     settings,
     handleTogglePackageName: (packageName: string) => {
+      if (!settings.enabledPackages) return;
+
       const enabledPackages: Set<string> = new Set(settings.enabledPackages);
 
       if (settings.enabledPackages.has(packageName)) {

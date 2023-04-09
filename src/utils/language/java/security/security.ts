@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function security({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.security")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.security")) return [];
 
   return [
     ...repeat("AccessControlContext", veryRareMultiplier),

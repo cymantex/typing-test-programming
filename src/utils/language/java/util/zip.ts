@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function zip({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.util.zip")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.util.zip")) return [];
 
   return [
     ...repeat("Adler32", veryRareMultiplier),

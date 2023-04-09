@@ -1,14 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
-export function io({
-  veryRareMultiplier,
-  rareMultiplier,
-  commonMultiplier,
-  enabledPackages,
-}: Settings) {
-  if (!enabledPackages.has("java.io")) return [];
+export function io({ veryRareMultiplier, rareMultiplier, commonMultiplier, enabledPackages }: Settings) {
+  if (!enabledPackages || !enabledPackages.has("java.io")) return [];
 
   return [
     ...repeat("BufferedInputStream", veryRareMultiplier),

@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function math({ rareMultiplier, veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.math")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.math")) return [];
 
   return [
     ...repeat("BigDecimal", rareMultiplier),

@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function format({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.time.format")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.time.format")) return [];
 
   return [
     ...repeat("DateTimeFormatter", veryRareMultiplier),

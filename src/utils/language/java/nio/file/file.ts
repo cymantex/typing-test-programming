@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function file({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.nio.file")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.nio.file")) return [];
 
   return [
     ...repeat("AccessDeniedException", veryRareMultiplier),

@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function charset({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.nio.charset")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.nio.charset")) return [];
 
   return [
     ...repeat("CharacterCodingException", veryRareMultiplier),

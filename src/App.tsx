@@ -9,9 +9,9 @@ import { TypingTestLanguageButtons } from "./components/typing-test/TypingTestLa
 import { Menu } from "./components/Menu/Menu";
 import { TypingTestResultChartModal } from "./components/typing-test/TypingTestResultChartModal/TypingTestResultChartModal";
 import { useModal } from "@/hooks/useModal";
-import { JavaSettingsModal } from "@/components/JavaSettingsModal/JavaSettingsModal";
 import { useSettings } from "@/hooks/useSettings";
 import { upsertSettings } from "@/utils/language/settings";
+import { SettingsModal } from "@/components/SettingsModal/SettingsModal";
 
 export function App() {
   const {
@@ -38,7 +38,7 @@ export function App() {
   });
 
   const typingTestResultModal = useModal();
-  const javaSettingsModal = useModal();
+  const settingsModal = useModal();
 
   return (
     <div>
@@ -79,14 +79,7 @@ export function App() {
         disabled={inputValue !== ""}
         className="mt-5 flex justify-center"
       />
-      <Menu
-        onChartClick={typingTestResultModal.open}
-        onSettingsClick={() => {
-          if (selectedLanguage === "Java") {
-            javaSettingsModal.open();
-          }
-        }}
-      />
+      <Menu onChartClick={typingTestResultModal.open} onSettingsClick={settingsModal.open} />
       <TypingTestResultChartModal
         isOpen={typingTestResultModal.isOpen}
         selectedLanguage={selectedLanguage}
@@ -103,7 +96,8 @@ export function App() {
           handleResultModalClose();
         }}
       />
-      <JavaSettingsModal
+      <SettingsModal
+        selectedLanguage={selectedLanguage}
         seconds={settings.testDurationSeconds}
         onSecondsChange={(seconds) => {
           upsertSettings(selectedLanguage, { testDurationSeconds: seconds });
@@ -114,8 +108,8 @@ export function App() {
           handleTogglePackageName(packageName);
           onLanguageSelect(selectedLanguage);
         }}
-        isOpen={javaSettingsModal.isOpen}
-        onClose={javaSettingsModal.close}
+        isOpen={settingsModal.isOpen}
+        onClose={settingsModal.close}
       />
     </div>
   );

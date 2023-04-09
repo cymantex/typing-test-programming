@@ -1,16 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
-export function util({
-  veryRareMultiplier,
-  rareMultiplier,
-  extremelyCommonMultiplier,
-  veryCommonMultiplier,
-  commonMultiplier,
-  enabledPackages,
-}: Settings) {
-  if (!enabledPackages.has("java.util")) return [];
+export function util({ veryRareMultiplier, rareMultiplier, extremelyCommonMultiplier, veryCommonMultiplier, commonMultiplier, enabledPackages }: Settings) {
+  if (!enabledPackages || !enabledPackages.has("java.util")) return [];
 
   return [
     ...repeat("AbstractCollection", veryRareMultiplier),

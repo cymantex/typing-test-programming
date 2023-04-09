@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function spec({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.security.spec")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.security.spec")) return [];
 
   return [
     ...repeat("AlgorithmParameterSpec", veryRareMultiplier),

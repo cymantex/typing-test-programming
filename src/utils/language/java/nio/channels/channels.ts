@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function channels({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.nio.channels")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.nio.channels")) return [];
 
   return [
     ...repeat("AcceptPendingException", veryRareMultiplier),

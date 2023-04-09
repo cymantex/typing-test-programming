@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function netSpi({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.net.spi")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.net.spi")) return [];
 
   return [
     ...repeat("InetAddressResolver", veryRareMultiplier),

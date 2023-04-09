@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function invoke({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.lang.invoke")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.lang.invoke")) return [];
 
   return [
     ...repeat("BootstrapCallInfo", veryRareMultiplier),

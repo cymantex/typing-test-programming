@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function module({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.lang.module")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.lang.module")) return [];
 
   return [
     ...repeat("Configuration", veryRareMultiplier),

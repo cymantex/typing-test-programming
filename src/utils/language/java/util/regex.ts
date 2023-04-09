@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function regex({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.util.regex")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.util.regex")) return [];
 
   return [
     ...repeat("IntHashSet", veryRareMultiplier),

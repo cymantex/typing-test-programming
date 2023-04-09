@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function channelsSpi({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.nio.channels.spi")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.nio.channels.spi")) return [];
 
   return [
     ...repeat("AbstractInterruptibleChannel", veryRareMultiplier),

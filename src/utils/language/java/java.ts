@@ -1,4 +1,6 @@
+// Auto-generated file. Do not edit.
 import { repeatArray } from "../../utils";
+import { Settings } from "@/types";
 import { keywords } from "./keywords";
 import { io } from "./io";
 import { lang } from "./lang/lang";
@@ -42,7 +44,6 @@ import { regex } from "./util/regex";
 import { utilSpi } from "./util/utilSpi";
 import { stream } from "./util/stream";
 import { zip } from "./util/zip";
-import { Settings } from "@/types";
 
 export const java = (settings: Settings) =>
   repeatArray(

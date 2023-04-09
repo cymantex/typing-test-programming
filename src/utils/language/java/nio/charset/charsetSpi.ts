@@ -1,9 +1,11 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function charsetSpi({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.nio.charset.spi")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.nio.charset.spi")) return [];
 
-  return [...repeat("CharsetProvider", veryRareMultiplier)];
+  return [
+    ...repeat("CharsetProvider", veryRareMultiplier),
+  ];
 }

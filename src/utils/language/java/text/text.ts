@@ -1,9 +1,9 @@
 // Auto-generated file. Do not edit.
-import { repeat } from "@/utils/utils";
 import { Settings } from "@/types";
+import { repeat } from "@/utils/utils";
 
 export function text({ veryRareMultiplier, enabledPackages }: Settings) {
-  if (!enabledPackages.has("java.text")) return [];
+  if (!enabledPackages || !enabledPackages.has("java.text")) return [];
 
   return [
     ...repeat("Annotation", veryRareMultiplier),
