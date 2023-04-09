@@ -1,8 +1,8 @@
 // Auto-generated file. Do not edit.
-import { LanguageSettings } from "@/utils/language/settings";
+import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
 
-export function netSpi({ veryRareMultiplier, enabledPackages }: LanguageSettings) {
+export function netSpi({ veryRareMultiplier, enabledPackages }: Settings) {
   if (!enabledPackages.has("java.net.spi")) return [];
 
   return [

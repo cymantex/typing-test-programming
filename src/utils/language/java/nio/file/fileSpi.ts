@@ -1,8 +1,8 @@
 // Auto-generated file. Do not edit.
-import { LanguageSettings } from "@/utils/language/settings";
+import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
 
-export function fileSpi({ veryRareMultiplier, enabledPackages }: LanguageSettings) {
+export function fileSpi({ veryRareMultiplier, enabledPackages }: Settings) {
   if (!enabledPackages.has("java.nio.file.spi")) return [];
 
   return [

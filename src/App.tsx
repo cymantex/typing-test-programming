@@ -10,7 +10,6 @@ import { Menu } from "./components/Menu/Menu";
 import { TypingTestResultChartModal } from "./components/typing-test/TypingTestResultChartModal/TypingTestResultChartModal";
 import { useModal } from "@/hooks/useModal";
 import { JavaSettingsModal } from "@/components/JavaSettingsModal/JavaSettingsModal";
-import { Language } from "@/utils/language/utils";
 import { useSettings } from "@/hooks/useSettings";
 import { upsertSettings } from "@/utils/language/settings";
 
@@ -83,7 +82,7 @@ export function App() {
       <Menu
         onChartClick={typingTestResultModal.open}
         onSettingsClick={() => {
-          if (selectedLanguage === Language.Java) {
+          if (selectedLanguage === "Java") {
             javaSettingsModal.open();
           }
         }}

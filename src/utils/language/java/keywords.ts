@@ -1,4 +1,4 @@
-import { LanguageSettings } from "../settings";
+import { Settings } from "../settings";
 import { repeat } from "../../utils";
 
 export function keywords({
@@ -7,7 +7,7 @@ export function keywords({
   rareMultiplier,
   extremelyCommonMultiplier,
   insanelyCommonMultiplier,
-}: LanguageSettings) {
+}: Settings) {
   return [
     ...repeat("abstract", extremelyCommonMultiplier),
     ...repeat("assert", rareMultiplier),

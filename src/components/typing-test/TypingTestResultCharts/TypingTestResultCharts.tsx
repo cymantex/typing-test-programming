@@ -1,6 +1,6 @@
 import React from "react";
 import { getAllTestResults } from "../TypingTestResultModal/useSaveTestResults";
-import { Language } from "../../../utils/language/utils";
+import { Language } from "@/utils/language";
 import { TypingTestResultChart } from "./TypingTestResultChart";
 import { TypingTestRechartData } from "./types";
 import { toRechartDataList } from "./utils";

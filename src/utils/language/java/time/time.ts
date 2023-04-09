@@ -1,8 +1,8 @@
 // Auto-generated file. Do not edit.
-import { LanguageSettings } from "@/utils/language/settings";
+import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
 
-export function time({ veryRareMultiplier, commonMultiplier, enabledPackages }: LanguageSettings) {
+export function time({ veryRareMultiplier, commonMultiplier, enabledPackages }: Settings) {
   if (!enabledPackages.has("java.time")) return [];
 
   return [

@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "../../Modal";
 import { TypingTestResultCharts } from "../TypingTestResultCharts/TypingTestResultCharts";
-import { Language } from "@/utils/language/utils";
+import { Language } from "@/utils/language";
 
 interface TypingTestResultChartModalProps {
   isOpen: boolean;

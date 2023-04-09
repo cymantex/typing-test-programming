@@ -1,6 +1,6 @@
 import { getObject, upsertObject } from "local-storage-superjson";
 
-export interface LanguageSettings {
+export interface Settings {
   insanelyCommonMultiplier: number;
   extremelyCommonMultiplier: number;
   veryCommonMultiplier: number;
@@ -12,7 +12,7 @@ export interface LanguageSettings {
   testDurationSeconds: number;
 }
 
-export const defaultSettings: LanguageSettings = {
+export const defaultSettings: Settings = {
   insanelyCommonMultiplier: 10,
   extremelyCommonMultiplier: 7,
   veryCommonMultiplier: 5,
@@ -30,19 +30,15 @@ export const defaultSettings: LanguageSettings = {
   testDurationSeconds: 60,
 };
 
-export function upsertSettings(settings: Partial<LanguageSettings>) {
-  upsertObject<LanguageSettings>(
-    "settings",
-    { ...defaultSettings, ...settings },
-    (previousSettings) => ({
-      ...previousSettings,
-      ...settings,
-    })
-  );
+export function upsertSettings(settings: Partial<Settings>) {
+  upsertObject<Settings>("settings", { ...defaultSettings, ...settings }, (previousSettings) => ({
+    ...previousSettings,
+    ...settings,
+  }));
 }
 
-export function getSettings(): LanguageSettings {
-  const settings = getObject<LanguageSettings>("settings") || {};
+export function getSettings(): Settings {
+  const settings = getObject<Settings>("settings") || {};
 
   return {
     ...defaultSettings,

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getObject, upsertObject } from "local-storage-superjson";
-import { Language } from "../../../utils/language/utils";
+import { Language } from "@/utils/language";
 
 export type TypingTestResult = {
   wpm: number;

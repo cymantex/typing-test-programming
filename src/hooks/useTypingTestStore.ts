@@ -6,7 +6,7 @@ import {
   getExpectedWords,
   Language,
   setSelectedLanguage,
-} from "@/utils/language/utils";
+} from "@/utils/language";
 
 export interface TypingTestStore {
   inputValue: string;

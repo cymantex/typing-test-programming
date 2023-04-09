@@ -1,8 +1,8 @@
 // Auto-generated file. Do not edit.
-import { LanguageSettings } from "@/utils/language/settings";
+import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
 
-export function chrono({ veryRareMultiplier, enabledPackages }: LanguageSettings) {
+export function chrono({ veryRareMultiplier, enabledPackages }: Settings) {
   if (!enabledPackages.has("java.time.chrono")) return [];
 
   return [

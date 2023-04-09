@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import { Button } from "../Button";
-import { Language, toLanguage } from "../../utils/language/utils";
+import { Language, Languages } from "@/utils/language";
 import classNames from "classnames";
 import { LanguageIcon } from "../LanguageIcon";
 
@@ -18,7 +18,7 @@ export function TypingTestLanguageButtons({
 }: TypingTestLanguagePickerProps) {
   return (
     <div {...props}>
-      {Object.keys(Language).map((language) => (
+      {Languages.map((language) => (
         <Button
           key={language}
           title={language}
@@ -26,9 +26,9 @@ export function TypingTestLanguageButtons({
             "btn-primary": language === selectedLanguage.toString(),
           })}
           disabled={disabled}
-          onClick={() => onLanguageSelect(toLanguage(language))}
+          onClick={() => onLanguageSelect(language)}
         >
-          <LanguageIcon language={toLanguage(language)} />
+          <LanguageIcon language={language} />
         </Button>
       ))}
     </div>

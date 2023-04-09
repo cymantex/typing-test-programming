@@ -4,17 +4,15 @@ import { SiJava, SiTypescript } from "react-icons/all";
 import { typescript } from "./typescript";
 import { ReactElement } from "react";
 import { getObject, setObject } from "local-storage-superjson";
-import { getSettings, LanguageSettings } from "@/utils/language/settings";
+import { getSettings, Settings } from "@/utils/language/settings";
 
-export enum Language {
-  Java = "Java",
-  Typescript = "Typescript",
-}
+export const Languages = ["Java", "Typescript"] as const;
+export type Language = (typeof Languages)[number];
 
 interface LanguageMapping {
   [language: string]: {
     Icon: () => ReactElement;
-    getExpectedWords: (settings: LanguageSettings) => string[];
+    getExpectedWords: (settings: Settings) => string[];
   };
 }
 
@@ -23,25 +21,21 @@ interface LanguageMapping {
  * you should only need to properly define this mapping for any new language added.
  */
 export const languageMap: LanguageMapping = {
-  [Language.Java]: {
-    Icon: () => <SiJava title={Language.Java} />,
+  ["Java"]: {
+    Icon: () => <SiJava title={"Java"} />,
     getExpectedWords: java,
   },
-  [Language.Typescript]: {
-    Icon: () => <SiTypescript title={Language.Typescript} />,
+  ["Typescript"]: {
+    Icon: () => <SiTypescript title={"Typescript"} />,
     getExpectedWords: typescript,
   },
 };
-
-export function toLanguage(language: string): Language {
-  return Language[language as keyof typeof Language];
-}
 
 export function getDefaultLanguage(): Language {
   const languageOrNull = getObject<Language>("language");
 
   if (languageOrNull === null) {
-    return Language.Java;
+    return "Java";
   }
 
   return languageOrNull;
@@ -54,6 +48,6 @@ export async function setSelectedLanguage(language: Language): Promise<void> {
   });
 }
 
-export function getExpectedWords(language: string): string[] {
-  return languageMap[toLanguage(language)].getExpectedWords(getSettings());
+export function getExpectedWords(language: Language): string[] {
+  return languageMap[language].getExpectedWords(getSettings());
 }

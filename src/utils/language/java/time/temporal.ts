@@ -1,8 +1,8 @@
 // Auto-generated file. Do not edit.
-import { LanguageSettings } from "@/utils/language/settings";
+import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
 
-export function temporal({ veryRareMultiplier, enabledPackages }: LanguageSettings) {
+export function temporal({ veryRareMultiplier, enabledPackages }: Settings) {
   if (!enabledPackages.has("java.time.temporal")) return [];
 
   return [

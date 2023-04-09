@@ -1,5 +1,5 @@
 // Auto-generated file. Do not edit.
-import { LanguageSettings } from "@/utils/language/settings";
+import { Settings } from "@/utils/language/settings";
 import { repeat } from "@/utils/utils";
 
 export function util({
@@ -9,7 +9,7 @@ export function util({
   veryCommonMultiplier,
   commonMultiplier,
   enabledPackages,
-}: LanguageSettings) {
+}: Settings) {
   if (!enabledPackages.has("java.util")) return [];
 
   return [

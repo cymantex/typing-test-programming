@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
-import { languageMap, toLanguage } from "@/utils/language/utils";
+import { Language, languageMap } from "@/utils/language";
 
-export function LanguageIcon({ language }: { language: string }): ReactElement {
-  const Icon = languageMap[toLanguage(language)].Icon;
+export function LanguageIcon({ language }: { language: Language }): ReactElement {
+  const Icon = languageMap[language].Icon;
   return <Icon />;
 }
