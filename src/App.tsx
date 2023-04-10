@@ -10,7 +10,7 @@ import { Menu } from "./components/Menu/Menu";
 import { TypingTestResultChartModal } from "./components/typing-test/TypingTestResultChartModal/TypingTestResultChartModal";
 import { useModal } from "@/hooks/useModal";
 import { applySettings } from "@/hooks/stateless/applySettings";
-import { upsertSettings } from "@/utils/language/settings";
+import { getSettings, upsertSettings } from "@/utils/language/settings";
 import { SettingsModal } from "@/components/SettingsModal/SettingsModal";
 
 export function App() {
@@ -75,7 +75,10 @@ export function App() {
       </div>
       <TypingTestLanguageButtons
         selectedLanguage={selectedLanguage}
-        onLanguageSelect={onLanguageSelect}
+        onLanguageSelect={(language) => {
+          onLanguageSelect(language);
+          resetTimer(getSettings(language).testDurationSeconds);
+        }}
         disabled={inputValue !== ""}
         className="mt-5 flex justify-center"
       />
