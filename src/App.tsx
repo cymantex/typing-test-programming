@@ -9,7 +9,7 @@ import { TypingTestLanguageButtons } from "./components/typing-test/TypingTestLa
 import { Menu } from "./components/Menu/Menu";
 import { TypingTestResultChartModal } from "./components/typing-test/TypingTestResultChartModal/TypingTestResultChartModal";
 import { useModal } from "@/hooks/useModal";
-import { useSettings } from "@/hooks/useSettings";
+import { applySettings } from "@/hooks/stateless/applySettings";
 import { upsertSettings } from "@/utils/language/settings";
 import { SettingsModal } from "@/components/SettingsModal/SettingsModal";
 
@@ -26,7 +26,7 @@ export function App() {
     onBackspaceRemoveLastCharForCurrentWord,
   } = useTypingTestStore();
 
-  const { settings, handleTogglePackageName } = useSettings(selectedLanguage);
+  const { settings, handleTogglePackageName } = applySettings(selectedLanguage);
 
   const actualWords = inputValue.split(" ");
 

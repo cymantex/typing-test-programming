@@ -25,7 +25,7 @@ export function Modal({
   return (
     <div className={classNames("modal", { "modal-open": isOpen })}>
       <div className={classNames("modal-box", modalBoxClassName)}>
-        <h3 className="font-bold text-lg">{title}</h3>
+        <h3 className="font-bold text-lg text-center">{title}</h3>
         <div className="divider" />
         {children}
         <div className="divider" />

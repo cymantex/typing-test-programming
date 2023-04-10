@@ -10,7 +10,7 @@ setDataThemeOnHtmlElement(getObject<Theme>("theme"));
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <div className="hero">
-      <main className="hero-content block sm:flex text-center">
+      <main className="hero-content">
         <App />
       </main>
     </div>

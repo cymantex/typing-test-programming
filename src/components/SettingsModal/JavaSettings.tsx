@@ -11,7 +11,7 @@ export const JavaSettings = ({ enabledPackages, onTogglePackageName }: JavaSetti
   return (
     <>
       <div className="divider" />
-      <h3 className="text-left font-bold ml-2 mb-2">Enabled packages</h3>
+      <h3 className="font-bold ml-2 mb-2">Enabled packages</h3>
       <div className="grid grid-cols-1 md:grid-cols-2">
         {packageNames.map((packageName) => (
           <Toggle

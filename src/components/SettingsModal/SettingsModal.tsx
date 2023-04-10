@@ -30,8 +30,8 @@ export const SettingsModal = ({
       onClose={onClose}
       modalBoxClassName="max-w-xl"
     >
-      <div className="text-left pl-2">
-        <h3 className="text-left font-bold mb-2">Test duration (seconds): {seconds}</h3>
+      <div className="pl-2">
+        <h3 className="font-bold mb-2">Test duration (seconds): {seconds}</h3>
         <input
           type="range"
           min="10"
