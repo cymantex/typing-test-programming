@@ -1,4 +1,3 @@
-import React from "react";
 import { Modal } from "@/components/Modal";
 import { Language } from "@/types";
 import { JavaSettings } from "@/components/SettingsModal/JavaSettings";

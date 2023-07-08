@@ -1,4 +1,3 @@
-import React from "react";
 import { PreviousWordsAndChars } from "./PreviousWordsAndChars";
 import { RemainingCharsProps, TypingTestDiffProps, TypingTestWords } from "./types";
 import _ from "lodash";

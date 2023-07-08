@@ -1,5 +1,5 @@
 import create from "zustand";
-import React, { ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import _ from "lodash";
 import { getDefaultLanguage, getExpectedWords, setSelectedLanguage } from "@/utils/language";
 import { Language } from "@/types";

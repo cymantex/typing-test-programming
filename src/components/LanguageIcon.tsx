@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { languageMap } from "@/utils/language";
 import { Language } from "@/types";
 

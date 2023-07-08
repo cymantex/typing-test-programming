@@ -1,4 +1,3 @@
-import React from "react";
 import { Toggle } from "@/components/Toggle";
 import { packageNames } from "@/utils/language/packageNames";
 

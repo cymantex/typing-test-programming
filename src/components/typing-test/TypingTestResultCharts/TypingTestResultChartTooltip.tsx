@@ -1,7 +1,7 @@
 import { useTypingTestStore } from "@/hooks/useTypingTestStore";
 import { defaultLanguageSettings } from "@/utils/language/settings";
 import { toDateTime } from "@/components/typing-test/TypingTestResultCharts/utils";
-import React from "react";
+
 import { TooltipProps } from "recharts";
 import { Settings } from "@/types";
 

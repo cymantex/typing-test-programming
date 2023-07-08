@@ -1,5 +1,3 @@
-import React from "react";
-
 export function Stat({ title, value }: { title: string; value: number | string }) {
   return (
     <div className="stat p-1">

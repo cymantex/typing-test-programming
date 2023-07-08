@@ -1,4 +1,3 @@
-import React from "react";
 import { TypingTestResultChart } from "./TypingTestResultChart";
 import { TypingTestRechartData } from "./types";
 import { toRechartDataList, toSettingsMap } from "./utils";

@@ -1,4 +1,3 @@
-import React from "react";
 import { Stat } from "../../Stat";
 import { useSaveTestResults } from "./useSaveTestResults";
 import { Modal } from "../../Modal";

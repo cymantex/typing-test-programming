@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { useFocus } from "@/hooks/useFocus";
 import classNames from "classnames";
 import { KeyboardEventHandler } from "react";

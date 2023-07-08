@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 import { Stat } from "../../Stat";
 
 export interface TypingTestStatsProps extends HTMLAttributes<HTMLElement> {
